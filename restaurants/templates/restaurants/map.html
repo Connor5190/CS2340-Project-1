@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <title>Restaurant Map</title>
+    <!-- Dynamically load Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&callback=initMap"
+            async defer></script>
+
+    <script>
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 33.7490, lng: -84.3880},  // Atlanta coordinates
+                zoom: 12
+            });
+
+            // Add markers for each restaurant
+            {% for restaurant in restaurants %}
+            let marker = new google.maps.Marker({
+                position: {lat: {{ restaurant.latitude }}, lng: {{ restaurant.longitude }}},
+                map: map,
+                title: '{{ restaurant.name }}'
+            });
+            {% endfor %}
+        }
+    </script>
+</head>
+<body>
+    <h1>Restaurant Locations</h1>
+    <div id="map" style="height: 500px; width: 100%;"></div>  <!-- Map container -->
+</body>
+</html>

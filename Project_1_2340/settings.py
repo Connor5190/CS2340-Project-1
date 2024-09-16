@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'restaurants',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +67,8 @@ TEMPLATES = [
         },
     },
 ]
+
+GOOGLE_MAPS_API_KEY = 'AIzaSyBmUeIEsM2N87wQW6IfDWb5gYhk0A2CkIo'
 
 WSGI_APPLICATION = 'Project_1_2340.wsgi.application'
 
