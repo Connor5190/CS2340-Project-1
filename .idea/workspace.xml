@@ -4,24 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ce1d98a-3f6b-4750-8de3-007c2b107a6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/restaurants/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurants/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurants/templates/restaurants/map.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurants/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restaurants/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Project_1_2340.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Project_1_2340.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="2ce1d98a-3f6b-4750-8de3-007c2b107a6b" name="Changes" comment="Integrated GoogleMaps feature for one of the views">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project_1_2340/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_1_2340/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project_1_2340/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_1_2340/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Restaurant_Search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurants/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Restaurant_Search/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurants/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Restaurant_Search/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurants/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Restaurant_Search/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurants/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Restaurant_Search/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Restaurant_Search/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/restaurants/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Restaurant_Search/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurants/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurants/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurants/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurants/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurants/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurants/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurants/templates/restaurants/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/templates/Restaurant_Search/map.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurants/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurants/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restaurants/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,18 +38,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ryancapozzi"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ryancapozzi&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Connor5190/CS2340-Project-1.git",
-    "accountId": "92021213-be67-4485-9b84-171e0f14bd8e"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Connor5190/CS2340-Project-1.git&quot;,
+    &quot;accountId&quot;: &quot;92021213-be67-4485-9b84-171e0f14bd8e&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -68,6 +64,7 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
     "git-widget-placeholder": "ryanC",
     "last_opened_file_path": "/Users/ryancapozzi/PycharmProjects/CS2340-Project-1",
     "node.js.detected.package.eslint": "true",
@@ -123,11 +120,26 @@
       <updated>1726083743997</updated>
       <workItem from="1726083754482" duration="3000" />
       <workItem from="1726085624085" duration="453000" />
-      <workItem from="1726427291393" duration="6736000" />
+      <workItem from="1726427291393" duration="7146000" />
+      <workItem from="1726515005885" duration="417000" />
     </task>
+    <task id="LOCAL-00001" summary="Integrated GoogleMaps feature for one of the views">
+      <option name="closed" value="true" />
+      <created>1726459194576</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726459194576</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="sample commit" />
+    <MESSAGE value="Integrated GoogleMaps feature for one of the views" />
+    <option name="LAST_COMMIT_MESSAGE" value="Integrated GoogleMaps feature for one of the views" />
   </component>
 </project>

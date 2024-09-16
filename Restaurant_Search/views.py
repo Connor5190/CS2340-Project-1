@@ -6,7 +6,7 @@ from django.conf import settings
 def restaurant_map(request):
     restaurants = Restaurant.objects.all()
     context = {
-        'restaurants': restaurants,
+        'Restaurant_Search': restaurants,
         'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY,  # Pass API key to template
     }
-    return render(request, 'restaurants/map.html', context)
+    return render(request, 'Restaurant_Search/map.html', context)
