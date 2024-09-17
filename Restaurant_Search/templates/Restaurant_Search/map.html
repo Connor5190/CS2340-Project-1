@@ -8,6 +8,7 @@
 
     <script>
         function initMap() {
+            // Create the map centered on Atlanta
             const map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 33.7490, lng: -84.3880},  // Atlanta coordinates
                 zoom: 12
@@ -16,9 +17,9 @@
             // Add markers for each restaurant
             {% for restaurant in restaurants %}
             let marker = new google.maps.Marker({
-                position: {lat: {{ restaurant.latitude }}, lng: {{ restaurant.longitude }}},
+                position: {lat: {{ restaurant.latitude }}, lng: {{ restaurant.longitude }}},  // Output latitude and longitude as numbers
                 map: map,
-                title: '{{ restaurant.name }}'
+                title: "{{ restaurant.name }}"  // Output name as a string
             });
             {% endfor %}
         }

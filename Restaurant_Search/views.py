@@ -3,6 +3,7 @@ from .models import Restaurant
 from django.conf import settings
 
 
+#Method displays a map on the page using map.html
 def restaurant_map(request):
     restaurants = Restaurant.objects.all()
     context = {
@@ -10,3 +11,4 @@ def restaurant_map(request):
         'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY,  # Pass API key to template
     }
     return render(request, 'Restaurant_Search/map.html', context)
+
