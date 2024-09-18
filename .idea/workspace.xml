@@ -4,27 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ce1d98a-3f6b-4750-8de3-007c2b107a6b" name="Changes" comment="I have created a test webpage that is linked to some html">
+    <list default="true" id="2ce1d98a-3f6b-4750-8de3-007c2b107a6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_1_2340/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_1_2340/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Restaurant_Search/templates/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/templates/test.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
-    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-        <option value="CSS File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="calebK" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -53,9 +47,7 @@
     "Django Server.Project_1_2340.executor": "Run",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "IvanRH",
-    "ignore.virus.scanning.warn.message": "true",
-    "list.type.of.created.stylesheet": "CSS",
+    "git-widget-placeholder": "#4 on IvanRH",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -75,7 +67,6 @@
         <env name="DJANGO_SETTINGS_MODULE" value="Project_1_2340.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.11 (mysite)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -109,34 +100,12 @@
       <option name="presentableId" value="Default" />
       <updated>1726083743997</updated>
       <workItem from="1726083754482" duration="3000" />
-      <workItem from="1726084132620" duration="2303000" />
-      <workItem from="1726495878611" duration="2141000" />
-      <workItem from="1726515147824" duration="3043000" />
+      <workItem from="1726680947654" duration="1828000" />
+      <workItem from="1726688327435" duration="404000" />
     </task>
-    <task id="LOCAL-00001" summary="I have created a test webpage that is linked to some html">
-      <option name="closed" value="true" />
-      <created>1726497566112</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1726497566112</updated>
-    </task>
-    <task id="LOCAL-00002" summary="I have created a test webpage that is linked to some html">
-      <option name="closed" value="true" />
-      <created>1726497984046</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1726497984046</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="I have created a test webpage that is linked to some html" />
-    <option name="LAST_COMMIT_MESSAGE" value="I have created a test webpage that is linked to some html" />
   </component>
 </project>

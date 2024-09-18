@@ -1,35 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      {% block title %}
-        Django App
-      {% endblock %}
-    </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  rel="stylesheet" />
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Atlanta Food Finder</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
+<body>
+<head>
+<style>
+.content {
+  max-width: 500px;
+  margin: auto;
+}
+</style>
+    <title></title>
+</head>
+<div class="content">
+    <div class="Frame1" style="width: 512px; height: 527px; position: relative; background: white; box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25)">
+      <div class="Frame2" style="height: 30px; left: 90px; top: 144px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: inline-flex">
+        <div class="EmailAddress" style="align-self: stretch; color: #E9E4E4; font-size: 16px; font-family: Inter, sans-serif; font-weight: 800; word-wrap: break-word">Email Address</div>
+        <div class="Rectangle2" style="align-self: stretch; height: 4px; background: #E0E0E0"></div>
       </div>
-    </nav>
-    <div class="container">{% block content %} {% endblock %}</div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" ></script>
-  </body>
-</html>
+      <div class="Frame3" style="height: 30px; left: 90px; top: 204px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: inline-flex">
+        <div class="Password" style="align-self: stretch; color: #E9E4E4; font-size: 16px; font-family: Inter, sans-serif; font-weight: 800; word-wrap: break-word">Password</div>
+        <div class="Rectangle2" style="align-self: stretch; height: 4px; background: #E0E0E0"></div>
+      </div>
+      <div class="Frame4" style="width: 292px; left: 106px; top: 30px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
+        <div class="Atlanta" style="width: 150px; height: 20px; color: #EF1616; font-size: 24px; font-family: Inter, sans-serif; font-weight: 800; word-wrap: break-word">ATLANTA</div>
+        <div class="Finder" style="width: 150px; height: 20px; color: #0D2CC7; font-size: 24px; font-family: Inter, sans-serif; font-weight: 800; word-wrap: break-word">FINDER</div>
+        <div class="Food" style="width: 150px; height: 20px; color: #F37227; font-size: 24px; font-family: Inter, sans-serif; font-weight: 800; word-wrap: break-word">FOOD</div>
+      </div>
+      <div class="Rectangle3" style="width: 250px; height: 95px; left: 140px; top: 290px; position: absolute; background: #EAEAEA; border-radius: 25px"></div>
+      <div class="LogIn" style="width: 55px; height: 20px; left: 237px; top: 327px; position: absolute; color: white; font-size: 16px; font-family: Inter, sans-serif; font-weight: 800; word-wrap: break-word">Log In</div>
+      <div class="ForgotYourEMailOrPassword" style="width: 204px; height: 12px; left: 177px; top: 478px; position: absolute; color: #3E81E7; font-size: 10px; font-family: Inter, sans-serif; font-weight: 800; word-wrap: break-word">Forgot your E-mail or Password</div>
+    </div>
+</div>
+</body>
