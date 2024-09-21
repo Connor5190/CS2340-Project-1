@@ -1,0 +1,11 @@
+#map {
+    height: 400px; /* The height is 400 pixels */
+    width: 50%; /* The width is the width of the web page */
+    margin: 0 auto;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }

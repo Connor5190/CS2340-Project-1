@@ -35,3 +35,6 @@ def signup_view(request):
     else:
         form = UserCreationForm()  # 7
     return render(request, 'Restaurant_Search/signup.html', {'form': form})
+
+def map_view(request):
+    return render(request, 'Restaurant_Search/map.html')
