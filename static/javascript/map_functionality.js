@@ -1,8 +1,29 @@
 let map;
+let latitude;
+let longitude;
+
+window.onload = function() {
+    if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(
+            (position) => {
+                latitude = position.coords.latitude;
+                longitude = position.coords.longitude;
+                initMap(latitude, longitude); // Update the map with the new coordinates
+            },
+            (error) => {
+                console.error('Error retrieving location', error);
+            }
+        );
+    } else {
+        alert('Geolocation is not supported by this browser.');
+    }
+};
+
+
 
 async function initMap() {
   // The location of Uluru
-  const position = { lat: -25.344, lng: 131.031 };
+  const position = { lat: latitude, lng: longitude};
   // Request needed libraries.
   //@ts-ignore
   const { Map } = await google.maps.importLibrary("maps");
@@ -22,5 +43,3 @@ async function initMap() {
     title: "Uluru",
   });
 }
-
-initMap();
