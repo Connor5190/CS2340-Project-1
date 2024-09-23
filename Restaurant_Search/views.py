@@ -3,6 +3,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from .forms import CreateUserForm
+
+
 
 def login_view(request):
     if request.method == "POST":
@@ -44,7 +47,7 @@ def profile_view(request):
 
 def signup_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)  # 1
+        form = CreateUserForm(request.POST)  # 1
         if form.is_valid():  # 2
             user = form.save()  # 3
             login(request, user)  # 4
