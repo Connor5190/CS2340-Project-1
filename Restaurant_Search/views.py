@@ -3,6 +3,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from .forms import CreateUserForm
+
+
 
 def login_view(request):
     if request.method == "POST":
@@ -20,14 +23,16 @@ def login_view(request):
 def profile_view(request):
     return render(request, "profile.html", {'user': request.user})
 
+
+
 def signup_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)  # 1
+        form = CreateUserForm(request.POST)  # 1
         if form.is_valid():  # 2
             user = form.save()  # 3
             login(request, user)  # 4
             messages.success(request, "Account created successfully!")  # 5
             return redirect('profile')  # 6
     else:
-        form = UserCreationForm()  # 7
+        form = CreateUserForm()  # 7
     return render(request, 'signup.html', {'form': form})
