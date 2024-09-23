@@ -23,7 +23,27 @@ def login_view(request):
 def profile_view(request):
     return render(request, "profile.html", {'user': request.user})
 
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('profile')
+        else:
+            return render(request, 'Restaurant_Search/login.html', {'error': 'Invalid credentials'})
+    return render(request, 'Restaurant_Search/login.html')
+
+@login_required
+def profile_view(request):
+    return render(request, "Restaurant_Search/profile.html", {'user': request.user})
 
 def signup_view(request):
     if request.method == 'POST':
@@ -34,5 +54,5 @@ def signup_view(request):
             messages.success(request, "Account created successfully!")  # 5
             return redirect('profile')  # 6
     else:
-        form = CreateUserForm()  # 7
-    return render(request, 'signup.html', {'form': form})
+        form = UserCreationForm()  # 7
+    return render(request, 'Restaurant_Search/signup.html', {'form': form})

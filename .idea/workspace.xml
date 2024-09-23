@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ce1d98a-3f6b-4750-8de3-007c2b107a6b" name="Changes" comment="I have finsihed the login page">
-      <change afterPath="$PROJECT_DIR$/Restaurant_Search/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Restaurant_Search/templates/signuptest.html" afterDir="false" />
+    <list default="true" id="2ce1d98a-3f6b-4750-8de3-007c2b107a6b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Restaurant_Search/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Restaurant_Search/templates/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Restaurant_Search/templates/signup.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Restaurant_Search/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Restaurant_Search/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_1_2340/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_1_2340/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Restaurant_Search/templates/test.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Restaurant_Search/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Restaurant_Search/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
@@ -25,9 +26,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -42,13 +43,13 @@
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;IReyesH1&quot;
+    &quot;assignee&quot;: &quot;calebkeener13&quot;
   }
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Connor5190/CS2340-Project-1.git&quot;,
-    &quot;accountId&quot;: &quot;b28b201b-d941-4203-99be-82a6e761f001&quot;
+    &quot;accountId&quot;: &quot;c68155db-be8c-4946-802d-72adaf2e8e54&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -60,23 +61,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Django Server.Project_1_2340.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;#4 on IvanRH&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ivanr/PycharmProjects/CS2340-Project-1/Restaurant_Search/templates&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.Project_1_2340.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "#4 on IvanRH",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/ivanr/PycharmProjects/CS2340-Project-1/Restaurant_Search/templates",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ivanr\PycharmProjects\CS2340-Project-1\Restaurant_Search\templates" />
@@ -132,26 +133,11 @@
       <workItem from="1726719539505" duration="757000" />
       <workItem from="1726781281881" duration="6242000" />
       <workItem from="1726870770326" duration="2928000" />
-      <workItem from="1726873718901" duration="281000" />
-      <workItem from="1726965009789" duration="1022000" />
-      <workItem from="1727035692124" duration="13717000" />
     </task>
-    <task id="LOCAL-00001" summary="I have finsihed the login page">
-      <option name="closed" value="true" />
-      <created>1726873915659</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1726873915659</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="I have finsihed the login page" />
-    <option name="LAST_COMMIT_MESSAGE" value="I have finsihed the login page" />
   </component>
 </project>
