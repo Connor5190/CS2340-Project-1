@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import CreateUserForm
+import json
+
 
 
 
@@ -56,3 +58,6 @@ def signup_view(request):
     else:
         form = UserCreationForm()  # 7
     return render(request, 'Restaurant_Search/signup.html', {'form': form})
+
+def map_view(request):
+    return render(request, 'Restaurant_Search/map.html')
