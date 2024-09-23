@@ -19,27 +19,32 @@ window.onload = function() {
     }
 };
 
-
-
 async function initMap() {
-  // The location of Uluru
+
+  // The location of the user
   const position = { lat: latitude, lng: longitude};
   // Request needed libraries.
   //@ts-ignore
   const { Map } = await google.maps.importLibrary("maps");
-  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+  const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
 
-  // The map, centered at Uluru
+  // The map, centered at user
   map = new Map(document.getElementById("map"), {
-    zoom: 4,
-    center: position,
-    mapId: "DEMO_MAP_ID",
+      zoom: 4,
+      center: position,
+      mapId: "86c19ff08dd83b77",
+      mapTypeControl: false,
+    });
+
+  // The marker, positioned at your location
+  const pinTextGlyph = new PinElement({
+  glyph: "H",
+  glyphColor: "white",
   });
 
-  // The marker, positioned at Uluru
   const marker = new AdvancedMarkerElement({
     map: map,
     position: position,
-    title: "Uluru",
+    content: pinTextGlyph.element,
   });
 }
