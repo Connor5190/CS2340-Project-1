@@ -41,4 +41,4 @@ def map_view(request):
     return render(request, 'Restaurant_Search/map.html')
 
 def favorites_view(request):
-    return HttpResponse("This is the favorites page.")
+    return render(request, 'Restaurant_Search/favorites.html')

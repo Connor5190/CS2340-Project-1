@@ -30,7 +30,7 @@ async function initMap() {
 
   // The map, centered at user
   map = new Map(document.getElementById("map"), {
-      zoom: 4,
+      zoom: 6,
       center: position,
       mapId: "86c19ff08dd83b77",
       mapTypeControl: false,
