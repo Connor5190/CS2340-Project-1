@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Favorite Restaurants</title>
+
+    <!-- Load static files -->
+    {% load static %}
+
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/favorites_styles.css' %}">
+</head>
+<body>
+    <div id="title">
+        <h1>Atlanta Food Finder</h1>
+    </div>
+
+    <div id="menu">
+        <a href="{% url 'profile' %}" class="flex-item">Profile</a>
+        <a href="{% url 'map' %}" class="flex-item">Map</a>
+        <a href="{% url 'favorites' %}" class="flex-item">Favorites</a>
+    </div>
+</body>
+</html>
