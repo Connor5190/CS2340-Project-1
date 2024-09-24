@@ -18,11 +18,17 @@
     <script type="module" src="{% static 'javascript/map_functionality.js' %}"></script>
 </head>
   <body>
-    <h3>My Google Maps Demo</h3>
+    <div id="title">
+        <h1>Atlanta Food Finder</h1>
+    </div>
+
+    <div id="menu">
+        <a href="{% url 'profile' %}" class="flex-item">Profile</a>
+        <a href="{% url 'map' %}" class="flex-item">Map</a>
+        <a href="{% url 'favorites' %}" class="flex-item">Favorites</a>
+    </div>
     <!--The div element for the map -->
     <div id="map"></div>
-
-    <p id="location"></p>
 
     <!-- prettier-ignore -->
     <script>

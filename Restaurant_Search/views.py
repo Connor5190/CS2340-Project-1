@@ -1,5 +1,6 @@
 import json
 
+from django.http import HttpResponse
 # Create your views here.
 
 from django.shortcuts import render, redirect
@@ -38,3 +39,6 @@ def signup_view(request):
 
 def map_view(request):
     return render(request, 'Restaurant_Search/map.html')
+
+def favorites_view(request):
+    return HttpResponse("This is the favorites page.")
