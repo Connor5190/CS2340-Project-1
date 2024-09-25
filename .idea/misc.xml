@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Black">
-    <option name="sdkName" value="Python 3.9 (PyCharmLearningProject)" />
+    <option name="sdkName" value="Python 3.12 (Project_1_2340)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (PyCharmLearningProject)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (CS2340-Project-1)" project-jdk-type="Python SDK" />
 </project>

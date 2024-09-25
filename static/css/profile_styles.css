@@ -1,0 +1,27 @@
+#menu{
+    background: rgb(195, 144, 144);
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+
+}
+
+#title {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-item{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    flex: 1 1 0;
+}
+
+.flex-item:hover{
+    background: rgb(228, 168, 168);
+    text-decoration: underline;
+}

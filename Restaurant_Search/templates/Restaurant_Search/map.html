@@ -1,32 +1,49 @@
-<!DOCTYPE html>
-<html lang = "en">
+<!doctype html>
+<!--
+ @license
+ Copyright 2019 Google LLC. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+-->
+<html lang="en">
 <head>
-    <title>Restaurant Map</title>
-    <!-- Dynamically load Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&callback=initMap"
-            async defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Django App</title>
 
-    <script>
-        function initMap() {
-            // Create the map centered on Atlanta
-            const map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 33.7490, lng: -84.3880},  // Atlanta coordinates
-                zoom: 12
-            });
+    <!-- Load static files -->
+    {% load static %}
 
-            // Add markers for each restaurant
-            {% for restaurant in restaurants %}
-            let marker = new google.maps.Marker({
-                position: {lat: {{ restaurant.latitude }}, lng: {{ restaurant.longitude }}},  // Output latitude and longitude as numbers
-                map: map,
-                title: "{{ restaurant.name }}"  // Output name as a string
-            });
-            {% endfor %}
-        }
-    </script>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/map_styles.css' %}">
+    <script type="module" src="{% static 'javascript/map_functionality.js' %}"></script>
 </head>
-<body>
-    <h1>Restaurant Locations</h1>
-    <div id="map" style="height: 500px; width: 100%;"></div>  <!-- Map container -->
-</body>
+  <body>
+    <div id="title">
+        <h1>Atlanta Food Finder</h1>
+    </div>
+
+    <div id="menu">
+        <a href="{% url 'profile' %}" class="flex-item">Profile</a>
+        <a href="{% url 'map' %}" class="flex-item">Map</a>
+        <a href="{% url 'favorites' %}" class="flex-item">Favorites</a>
+    </div>
+
+    <div class="filters">
+        <input type="text" placeholder="Search for Restaurants" class="restaurant_search">
+    </div>
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+    <!-- prettier-ignore -->
+    <script>
+
+        (g=>{let h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});let d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+        key: "AIzaSyDQajrLWbY8hgHFzbOgfuHmlyIe51iWHUc",
+        v: "weekly",
+        // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+        // Add other bootstrap parameters as needed, using camel case.
+      });
+
+    </script>
+  </body>
 </html>
