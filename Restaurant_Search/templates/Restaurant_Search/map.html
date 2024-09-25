@@ -15,7 +15,8 @@
 
     <!-- Link to CSS file -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/map_styles.css' %}">
-    <script type="module" src="{% static 'javascript/map_functionality.js' %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfRt5i3Uj5zANcB5mnmWuSlNzKCp_00Fk&libraries=places" async defer></script>
+    <script type="module" src="{% static 'javascript/map_functionality.js' %}" defer></script>
 </head>
   <body>
     <div id="title">
@@ -29,7 +30,17 @@
     </div>
 
     <div class="filters">
-        <input type="text" placeholder="Search for Restaurants" class="restaurant_search">
+        <form method="POST" >
+            {% csrf_token %}
+            <input type="text"  name="details" placeholder="Search for Restaurants" class="restaurant_search">
+
+{#            <label for="ratings">Preferences:</label>#}
+{#            <select id="ratings" name="ratings[]" multiple size="1">#}
+{#                <option value="option1">Option 1</option>#}
+{#                <option value="option2">Option 2</option>#}
+{#                <option value="option3">Option 3</option>#}
+{#            </select>#}
+        </form>
     </div>
     <!--The div element for the map -->
     <div id="map"></div>

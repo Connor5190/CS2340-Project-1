@@ -1,13 +1,11 @@
 import json
-
-from django.http import HttpResponse
-# Create your views here.
-
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.views import View
 
 def login_view(request):
     if request.method == "POST":
@@ -38,6 +36,7 @@ def signup_view(request):
     return render(request, 'Restaurant_Search/signup.html', {'form': form})
 
 def map_view(request):
+
     return render(request, 'Restaurant_Search/map.html')
 
 def favorites_view(request):

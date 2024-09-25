@@ -125,3 +125,5 @@ STATICFILES_DIRS = [BASE_DIR / "static"]  # Ensure you have the static folder at
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+GOOGLE_PLACES_API_KEY = 'AIzaSyDfRt5i3Uj5zANcB5mnmWuSlNzKCp_00Fk'
