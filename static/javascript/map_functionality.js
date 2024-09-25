@@ -1,6 +1,7 @@
 let map;
 let latitude;
 let longitude;
+let marker;
 
 window.onload = function() {
     if (navigator.geolocation) {
@@ -25,12 +26,13 @@ async function initMap() {
   const position = { lat: latitude, lng: longitude};
   // Request needed libraries.
   //@ts-ignore
-  const { Map } = await google.maps.importLibrary("maps");
+  const { Map, InfoWindow } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
+  const { PlacesService } = await google.maps.importLibrary("places")
 
   // The map, centered at user
   map = new Map(document.getElementById("map"), {
-      zoom: 6,
+      zoom: 10,
       center: position,
       mapId: "86c19ff08dd83b77",
       mapTypeControl: false,
@@ -42,9 +44,26 @@ async function initMap() {
   glyphColor: "white",
   });
 
-  const marker = new AdvancedMarkerElement({
-    map: map,
-    position: position,
-    content: pinTextGlyph.element,
+  if (!marker) {
+      marker = new AdvancedMarkerElement({
+          map: map,
+          position: position,
+          content: pinTextGlyph.element,
+      });
+  } else {
+      marker.setPosition(position);
+  }
+
+  // Adding info windows with better information
+  const infoWindow = new InfoWindow({
+      content: "<p>Fill with details from Places API helper</p>",
+  });
+
+  marker.element.addEventListener("click", () => {
+      infoWindow.open({
+          anchor: marker,
+          map,
+          shouldFocus:false
+      });
   });
 }

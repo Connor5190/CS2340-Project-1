@@ -16,23 +16,72 @@
     <!-- Link to CSS file -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/map_styles.css' %}">
     <script type="module" src="{% static 'javascript/map_functionality.js' %}"></script>
+
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #4f8cff, #9147ff);
+            color: white;
+        }
+
+        /* Centered container */
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            width: 900px;
+            text-align: center;
+            color: #333;
+        }
+
+        /* Map div styling */
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Text styling */
+        h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #555;
+        }
+    </style>
 </head>
   <body>
-    <div id="title">
-        <h1>Atlanta Food Finder</h1>
-    </div>
+    <div class="container">
+        <div id="title">
 
-    <div id="menu">
-        <a href="{% url 'profile' %}" class="flex-item">Profile</a>
-        <a href="{% url 'map' %}" class="flex-item">Map</a>
-        <a href="{% url 'favorites' %}" class="flex-item">Favorites</a>
-    </div>
+            <h1>Atlanta Food Finder</h1>
+        </div>
 
-    <div class="filters">
-        <input type="text" placeholder="Search for Restaurants" class="restaurant_search">
+        <div id="menu">
+            <a href="{% url 'profile' %}" class="flex-item">Profile</a>
+            <a href="{% url 'map' %}" class="flex-item">Map</a>
+            <a href="{% url 'favorites' %}" class="flex-item">Favorites</a>
+        </div>
+
+        <div class="filters">
+            <input type="text" placeholder="Search for Restaurants" class="restaurant_search">
+        </div>
+        <!--The div element for the map -->
+        <div id="map"></div>
     </div>
-    <!--The div element for the map -->
-    <div id="map"></div>
 
     <!-- prettier-ignore -->
     <script>
