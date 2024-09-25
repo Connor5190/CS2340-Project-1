@@ -1,8 +1,5 @@
 import json
-
 from django.http import HttpResponse
-# Create your views here.
-
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -27,7 +24,7 @@ def profile_view(request):
 
 def signup_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)  # 1
+        form = CreateUserForm(request.POST)  # 1
         if form.is_valid():  # 2
             user = form.save()  # 3
             login(request, user)  # 4

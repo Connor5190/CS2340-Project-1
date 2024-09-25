@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ce1d98a-3f6b-4750-8de3-007c2b107a6b" name="Changes" comment="sample commit">
-      <change afterPath="$PROJECT_DIR$/Restaurant_Search/templates/Restaurant_Search/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Restaurant_Search/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="2ce1d98a-3f6b-4750-8de3-007c2b107a6b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Restaurant_Search/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Restaurant_Search/templates/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Restaurant_Search/templates/signup.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project_1_2340/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_1_2340/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project_1_2340/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_1_2340/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Restaurant_Search/templates/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Restaurant_Search/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Restaurant_Search/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,13 +28,14 @@
       <list>
         <option value="Python Script" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="calebK" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,7 +67,9 @@
     "Django Server.Project_1_2340.executor": "Run",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "calebK",
+    "git-widget-placeholder": "#4 on IvanRH",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/ivanr/PycharmProjects/CS2340-Project-1/Restaurant_Search/templates",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -72,6 +78,12 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ivanr\PycharmProjects\CS2340-Project-1\Restaurant_Search\templates" />
+      <recent name="C:\Users\ivanr\PycharmProjects\CS2340-Project-1\Restaurant_Search\migrations" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Project_1_2340" type="Python.DjangoServer" factoryName="Django server">
       <module name="Project_1_2340" />
@@ -115,52 +127,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1726083743997</updated>
-      <workItem from="1726083754482" duration="1975000" />
-      <workItem from="1726414425290" duration="4122000" />
-    </task>
-    <task id="LOCAL-00001" summary="sample commit">
-      <option name="closed" value="true" />
-      <created>1726083847709</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1726083847709</updated>
-    </task>
-    <task id="LOCAL-00002" summary="sample commit">
-      <option name="closed" value="true" />
-      <created>1726083888837</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1726083888837</updated>
-    </task>
-    <task id="LOCAL-00003" summary="sample commit">
-      <option name="closed" value="true" />
-      <created>1726083951014</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1726083951014</updated>
+      <workItem from="1726083754482" duration="3000" />
+      <workItem from="1726680947654" duration="1828000" />
+      <workItem from="1726688327435" duration="404000" />
+      <workItem from="1726719539505" duration="757000" />
+      <workItem from="1726781281881" duration="6242000" />
+      <workItem from="1726870770326" duration="2928000" />
     </task>
     <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="sample commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="sample commit" />
   </component>
 </project>
