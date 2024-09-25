@@ -34,7 +34,7 @@ async function initMap() {
   map = new Map(document.getElementById("map"), {
       zoom: 10,
       center: position,
-      mapId: "86c19ff08dd83b77",
+      mapId: "DEMO_MAP_ID",
       mapTypeControl: false,
     });
 

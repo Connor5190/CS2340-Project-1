@@ -38,6 +38,3 @@ def signup_view(request):
 def map_view(request):
 
     return render(request, 'Restaurant_Search/map.html')
-
-def favorites_view(request):
-    return render(request, 'Restaurant_Search/favorites.html')
