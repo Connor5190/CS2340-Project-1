@@ -1,27 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title> User Login </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <style>
+        /* Background gradient */
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #4f8cff, #9147ff);
+        }
+
+        /* Centering the form */
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            width: 400px;
+        }
+
+        /* Form styling */
+        h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #888;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 20px 0;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            outline: none;
+            border-bottom: 2px solid #9147ff;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background: linear-gradient(to right, #4f8cff, #9147ff);
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #4f8cff, #6a36cc);
+        }
+
+        /* Links */
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-footer a {
+            color: #9147ff;
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
 </head>
+
 <body>
-    <h2>Login</h2>
-    {% if error %}
+    <div class="login-container">
+        <h2>Login</h2>
+        {% if error %}
         <p style="color: red">{{ error }}</p>
-    {% endif %}
-    <form method="POST">
-        {% csrf_token %}
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required><br>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required><br>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required><br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required><br>
 
-        <button type="submit">Login</button>
+            <button type="submit">Login</button>
 
-        <br>
+            <br>
 
-        <p>If you do not have an account registered with this site, register at this link. <a href="{% url 'signup' %}">Signup Here</a></p>
-    </form>
+            <p>If you do not have an account registered with this site, register at this link. <a href="{% url 'signup' %}">Signup Here</a></p>
+        </form>
+    </div>
 </body>
+
 </html>

@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> {{ user.username }}'s Profile </title>
+    <title>Favorite Restaurants</title>
 
     <!-- Load static files -->
     {% load static %}
 
     <!-- Link to CSS file -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/profile_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/favorites_styles.css' %}">
 </head>
 <body>
     <div id="title">
@@ -20,7 +20,5 @@
         <a href="{% url 'map' %}" class="flex-item">Map</a>
         <a href="{% url 'favorites' %}" class="flex-item">Favorites</a>
     </div>
-
-    <h1>Welcome, {{ user.username }}!</h1>
 </body>
 </html>

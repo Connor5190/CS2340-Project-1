@@ -1,3 +1,8 @@
+import json
+
+from django.http import HttpResponse
+# Create your views here.
+
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -16,7 +21,6 @@ def login_view(request):
             return render(request, 'Restaurant_Search/login.html', {'error': 'Invalid credentials'})
     return render(request, 'Restaurant_Search/login.html')
 
-
 @login_required
 def profile_view(request):
     return render(request, "Restaurant_Search/profile.html", {'user': request.user})
@@ -33,4 +37,8 @@ def signup_view(request):
         form = UserCreationForm()  # 7
     return render(request, 'Restaurant_Search/signup.html', {'form': form})
 
+def map_view(request):
+    return render(request, 'Restaurant_Search/map.html')
 
+def favorites_view(request):
+    return render(request, 'Restaurant_Search/favorites.html')
