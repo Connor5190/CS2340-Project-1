@@ -1,9 +1,8 @@
 #menu{
-    background: rgb(195, 144, 144);
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 20px;
-
+    background: linear-gradient(to right,#9147ff, #4f8cff);
 }
 
 #title {
@@ -24,4 +23,15 @@
 .flex-item:hover{
     background: rgb(228, 168, 168);
     text-decoration: underline;
+}
+
+body {
+    background: linear-gradient(to right, #4f8cff, #9147ff);
+}
+
+#scroll-section {
+    height: 200px; /* Set a fixed height */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    border: 3px solid #ffffff; /* Optional: border for visibility */
+    padding: 10px; /* Optional: padding for content */
 }

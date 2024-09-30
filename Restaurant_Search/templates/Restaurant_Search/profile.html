@@ -8,7 +8,9 @@
     {% load static %}
 
     <!-- Link to CSS file -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/profile_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'Restaurant_Search/css/profile_styles.css' %}">
+
+
 </head>
 <body>
     <div id="title">
@@ -18,9 +20,14 @@
     <div id="menu">
         <a href="{% url 'profile' %}" class="flex-item">Profile</a>
         <a href="{% url 'map' %}" class="flex-item">Map</a>
-        <a href="{% url 'favorites' %}" class="flex-item">Favorites</a>
     </div>
 
     <h1>Welcome, {{ user.username }}!</h1>
+
+    <h2>Here are your favorite restaurants</h2>
+    <div id="scroll-section">
+        <p> Hopefully we can iterate through our restaurants</p>
+        <p> And add them here </p>
+    </div>
 </body>
 </html>
