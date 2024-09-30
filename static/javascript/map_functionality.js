@@ -73,7 +73,7 @@ async function findPlaces() {
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
   const request = {
     textQuery: searchValue,
-    fields: ["displayName", "location", "businessStatus"],
+    fields: ["displayName", "location", "businessStatus", "formattedAddress", 'priceLevel'],
     includedType: "restaurant",
     locationBias: { lat: latitude, lng: longitude },
     isOpenNow: true,
@@ -100,6 +100,10 @@ async function findPlaces() {
         title: place.displayName,
       });
 
+      getPlaceDetails(place.id, markerView);
+
+      let infoWindow = new google.maps.InfoWindow;
+
       bounds.extend(place.location);
       console.log(place);
     });
@@ -108,6 +112,58 @@ async function findPlaces() {
     console.log("No results");
   }
 }
+
+function getPlaceDetails(placeId, markerView) {
+    const service = new google.maps.places.PlacesService(map); // Initialize PlacesService with the map
+
+    const detailsRequest = {
+        placeId: placeId,
+        fields: ["website", "opening_hours", "formatted_phone_number", "formatted_address", "rating", "name", "photos"], // Fields for Place Details
+    };
+
+    service.getDetails(detailsRequest, (place, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            console.log("Place details:", place);
+
+            let infoWindow = new google.maps.InfoWindow;
+
+            const contentString = `
+            <div>
+                <div style="display: flex; justify-content: center; gap: 20px; margin-top: 5px;">
+                    <h1 style="margin: 0; text-align: center; flex-grow: 1;">${place.name}</h1>
+                    <button style=" 
+                                    background-color: #edd2db; /* Pink background */
+                                    color: white; /* Heart color */
+                                    border: 2px solid #cca7a7; /* Remove default border */
+                                    border-radius: 50%; /* Make it circular */
+                                    width: 40px; /* Button width */
+                                    height: 40px; /* Button height */
+                                    font-size: 16px; /* Heart icon size */
+                                    cursor: pointer; /* Pointer cursor on hover */
+                                    display: flex; /* Center the heart */
+                                    justify-content: center; /* Center horizontally */
+                                    align-items: center; /* Center vertically */
+                                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+                                    transition: transform 0.2s;"
+                                    >❤️</button>
+                </div>
+                <p><strong>Address:</strong> ${place.formatted_address || 'No address available'}</p>
+                <p><strong>Rating:</strong> ${place.rating || 'No rating available'}</p>
+                <p><strong>Phone:</strong> ${place.formatted_phone_number || 'No phone number available'}</p>
+                <p><strong>Website:</strong> ${place.website ? `<a href="${place.website}" target="_blank">Visit website</a>` : 'No website available'}</p>
+                ${place.photos && place.photos.length > 0 ? `<img src="${place.photos[0].getUrl()}" alt="Image of ${place.name}" style="width:100px;height:auto;"/>` : ''}
+            </div>`;
+
+            markerView.addListener('click', () => {
+                infoWindow.setContent(contentString);
+                infoWindow.open(map, markerView);
+            });
+        } else {
+            console.log("Failed to get place details. Status:", status);
+        }
+    });
+}
+
 
 initMap();
 

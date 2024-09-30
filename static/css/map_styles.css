@@ -77,3 +77,7 @@
     text-align: center; /* Centers the text */
     border: 1px solid #ccc;
 }
+
+.infoHeader {
+    display: flex;
+}
