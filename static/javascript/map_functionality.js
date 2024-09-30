@@ -1,69 +1,75 @@
 let map;
+let center;
 let latitude;
 let longitude;
-let marker;
-
-window.onload = function() {
-    if (navigator.geolocation) {
-        navigator.geolocation.watchPosition(
-            (position) => {
-                latitude = position.coords.latitude;
-                longitude = position.coords.longitude;
-                initMap(latitude, longitude); // Update the map with the new coordinates
-            },
-            (error) => {
-                console.error('Error retrieving location', error);
-            }
-        );
-    } else {
-        alert('Geolocation is not supported by this browser.');
-    }
-};
 
 async function initMap() {
+    const { Map } = await google.maps.importLibrary("maps");
+  if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+          (position) => {
+              latitude = position.coords.latitude;
+              longitude = position.coords.longitude;
 
-  // The location of the user
-  const position = { lat: latitude, lng: longitude};
-  // Request needed libraries.
-  //@ts-ignore
-  const { Map, InfoWindow } = await google.maps.importLibrary("maps");
-  const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
-  const { PlacesService } = await google.maps.importLibrary("places")
+              const userPosition = { lat: latitude, lng: longitude };
 
-  // The map, centered at user
-  map = new Map(document.getElementById("map"), {
-      zoom: 10,
-      center: position,
-      mapId: "DEMO_MAP_ID",
-      mapTypeControl: false,
-    });
+              map = new Map(document.getElementById("map"), {
+                center: userPosition,
+                zoom: 11,
+                mapId: "DEMO_MAP_ID",
+              });
 
-  // The marker, positioned at your location
-  const pinTextGlyph = new PinElement({
-  glyph: "H",
-  glyphColor: "white",
-  });
-
-  if (!marker) {
-      marker = new AdvancedMarkerElement({
-          map: map,
-          position: position,
-          content: pinTextGlyph.element,
-      });
+              findPlaces();
+          },
+          (error) => {
+              console.error("Error retrieving location", error);
+          }
+      );
   } else {
-      marker.setPosition(position);
+      alert("Geolocation is not supported by this browser.");
   }
-
-  // Adding info windows with better information
-  const infoWindow = new InfoWindow({
-      content: "<p>Fill with details from Places API helper</p>",
-  });
-
-  marker.element.addEventListener("click", () => {
-      infoWindow.open({
-          anchor: marker,
-          map,
-          shouldFocus:false
-      });
-  });
 }
+
+async function findPlaces() {
+  const { Place } = await google.maps.importLibrary("places");
+  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+  const request = {
+    textQuery: "Chipotle",
+    fields: ["displayName", "location", "businessStatus"],
+    includedType: "restaurant",
+    locationBias: { lat: latitude, lng: longitude },
+    isOpenNow: true,
+    language: "en-US",
+    maxResultCount: 20,
+    minRating: 3.2,
+    region: "us",
+    useStrictTypeFiltering: false,
+  };
+  //@ts-ignore
+  const { places } = await Place.searchByText(request);
+
+  if (places.length) {
+    console.log(places);
+
+    const { LatLngBounds } = await google.maps.importLibrary("core");
+    const bounds = new LatLngBounds();
+
+    // Loop through and get all the results.
+    places.forEach((place) => {
+      const markerView = new AdvancedMarkerElement({
+        map,
+        position: place.location,
+        title: place.displayName,
+      });
+
+      bounds.extend(place.location);
+      console.log(place);
+    });
+    map.fitBounds(bounds);
+  } else {
+    console.log("No results");
+  }
+}
+
+initMap();
+
