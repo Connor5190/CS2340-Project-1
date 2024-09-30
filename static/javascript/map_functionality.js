@@ -97,6 +97,7 @@ function callback(results, status) {
 
         for (let i = 0; i < results.length; i++) {
             const place = results[i];
+            console.log(place);
             createMarker(place);
         }
     }
@@ -111,8 +112,19 @@ function createMarker(place) {
 
     markers.push(newMarker); // Add the new marker to the array
 
+    const contentString = `
+        <div>
+            <h2>${place.name}</h2>
+            <p><strong>Address:</strong> ${place.formatted_address || 'No address available'}</p>
+            <p><strong>Rating:</strong> ${place.rating || 'No rating available'}</p>
+            <p><strong>Phone:</strong> ${place.formatted_phone_number || 'No phone number available'}</p>
+            <p><strong>Website:</strong> ${place.website ? `<a href="${place.website}" target="_blank">Visit website</a>` : 'No website available'}</p>
+            ${place.photos && place.photos.length > 0 ? `<img src="${place.photos[0].getUrl()}" alt="Image of ${place.name}" style="width:100px;height:auto;"/>` : ''}
+        </div>
+    `;
+
     newMarker.addListener('click', () => {
-        infowindow.setContent(place.name);
+        infowindow.setContent(contentString);
         infowindow.open(map, newMarker);
     });
 }
