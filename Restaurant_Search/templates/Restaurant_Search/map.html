@@ -68,11 +68,6 @@
             gap: 20px;
         }
     </style>
-{#    <script#}
-{#  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQajrLWbY8hgHFzbOgfuHmlyIe51iWHUc&libraries=places&callback=initMap"#}
-{#  async#}
-{#  defer#}
-{#></script>#}
 </head>
   <body>
     <div class="container">
@@ -97,6 +92,16 @@
                         <option value="3">3 Stars</option>
                         <option value="4">4 Stars</option>
                         <option value="4.5">5 Stars</option>
+                    </select>
+
+                    <select id="distanceFilter" class="distance">
+                        <option value="" disabled selected>Distance(km)</option>
+                        <option value="2000">2 km</option>
+                        <option value="5000">5 km</option>
+                        <option value="10000">10 km</option>
+                        <option value="15000">15 km</option>
+                        <option value="20000">20 km</option>
+                        <option value="30000">30 km</option>
                     </select>
                 </div>
 {#                <div class="displayResults">#}

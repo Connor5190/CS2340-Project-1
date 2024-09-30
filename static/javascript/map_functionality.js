@@ -4,7 +4,9 @@ let latitude;
 let longitude;
 let searchValue = '';
 let selectedRating = 3; // Default to 3 stars and up
+let selectedRadius = 15000;
 
+const distanceFilter = document.getElementById('distanceFilter');
 const searchBar = document.getElementById('searchBar');
 const ratingFilter = document.getElementById('ratingFilter');
 
@@ -17,11 +19,18 @@ ratingFilter.addEventListener('change', function() {
     findPlaces();
 });
 
+distanceFilter.addEventListener('change', function() {
+    selectedRadius = parseFloat(distanceFilter.value);
+    console.log("Selected distance:", selectedRadius);
+
+    findPlaces();
+})
+
 // Function to get the input value
 function getSearchValue(event) {
     if (event.key === "Enter") { // Check if the pressed key is Enter
         searchValue = searchBar.value; // Get the current value of the input
-        searchBar.value = '';
+        // searchBar.value = '';
         findPlaces();// Output the value (or use it as needed)
     }
 }
