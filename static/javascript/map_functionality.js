@@ -2,6 +2,21 @@ let map;
 let center;
 let latitude;
 let longitude;
+let searchValue = '';
+
+const searchBar = document.getElementById('searchBar');
+
+// Function to get the input value
+function getSearchValue(event) {
+    if (event.key === "Enter") { // Check if the pressed key is Enter
+        searchValue = searchBar.value; // Get the current value of the input
+        searchBar.value = '';
+        findPlaces();// Output the value (or use it as needed)
+    }
+}
+
+// Add a keydown event listener to trigger the function on hitting Enter
+searchBar.addEventListener('keydown', getSearchValue);
 
 async function initMap() {
     const { Map } = await google.maps.importLibrary("maps");
@@ -18,8 +33,6 @@ async function initMap() {
                 zoom: 11,
                 mapId: "DEMO_MAP_ID",
               });
-
-              findPlaces();
           },
           (error) => {
               console.error("Error retrieving location", error);
@@ -31,10 +44,15 @@ async function initMap() {
 }
 
 async function findPlaces() {
+  if (!searchValue) {
+        console.log("No search value provided.");
+        return;
+    }
+
   const { Place } = await google.maps.importLibrary("places");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
   const request = {
-    textQuery: "Chipotle",
+    textQuery: searchValue,
     fields: ["displayName", "location", "businessStatus"],
     includedType: "restaurant",
     locationBias: { lat: latitude, lng: longitude },
