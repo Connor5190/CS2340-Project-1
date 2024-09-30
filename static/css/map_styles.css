@@ -35,9 +35,12 @@
 .restaurant_search {
     border-radius: 40px;
     height: 60px;
-    width: 300px;
+    width: 250px;
     padding: 0 10px;
     font-size: 15px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    text-align: center;
 }
 
 .filters {
@@ -45,4 +48,18 @@
     align-content: center;
     justify-content: center;
     margin-bottom: 20px;
+}
+
+.ratings {
+    position: relative; /* Ensure the parent element is positioned */
+    border-radius: 40px;
+    height: 60px;
+    width: 92px;
+    padding: 0 10px;
+    font-size: 15px;
+    background-color: #f9f9f9; /* Matches typical input background */
+    color: #333; /* Text color */
+    outline: none; /* Removes outline on focus */
+    text-align: center; /* Centers the text */
+    border: 1px solid #ccc;
 }

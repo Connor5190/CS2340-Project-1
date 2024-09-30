@@ -3,8 +3,19 @@ let center;
 let latitude;
 let longitude;
 let searchValue = '';
+let selectedRating = 3; // Default to 3 stars and up
 
 const searchBar = document.getElementById('searchBar');
+const ratingFilter = document.getElementById('ratingFilter');
+
+// Function to update the selectedRating when the dropdown value changes
+ratingFilter.addEventListener('change', function() {
+    selectedRating = parseFloat(this.value); // Convert the value to a number
+    console.log("Selected rating:", selectedRating);
+
+    // Optionally trigger a new search with the updated rating
+    findPlaces();
+});
 
 // Function to get the input value
 function getSearchValue(event) {
@@ -59,7 +70,7 @@ async function findPlaces() {
     isOpenNow: true,
     language: "en-US",
     maxResultCount: 20,
-    minRating: 3.2,
+    minRating: selectedRating,
     region: "us",
     useStrictTypeFiltering: false,
   };

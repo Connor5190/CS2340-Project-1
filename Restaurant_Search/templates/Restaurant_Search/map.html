@@ -87,8 +87,21 @@
 
         <div class="searchAndMap">
             <div class="filters">
-                <input type="text"  id="searchBar" name="details" placeholder="Search for Restaurants" class="restaurant_search">
-                <div class="displayResults"></div>
+                <div class="filters">
+                    <input type="text"  id="searchBar" name="details" placeholder="Search for Restaurants" class="restaurant_search">
+                    <select id="ratingFilter" class="ratings">
+                        <option value="" disabled selected>Ratings</option>
+                        <option value="0">0 Stars</option>
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="4.5">5 Stars</option>
+                    </select>
+                </div>
+{#                <div class="displayResults">#}
+{#                    <h3>Details</h3>#}
+{#                </div>#}
             </div>
             <!--The div element for the map -->
             <div id="map"></div>
