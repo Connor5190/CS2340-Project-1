@@ -1,0 +1,465 @@
+Index: Restaurant_Search/templates/Restaurant_Search/map.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!doctype html>\n<!--\n @license\n Copyright 2019 Google LLC. All Rights Reserved.\n SPDX-License-Identifier: Apache-2.0\n-->\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>My Django App</title>\n\n    <!-- Load static files -->\n    {% load static %}\n\n    <!-- Link to CSS file -->\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"{% static 'css/map_styles.css' %}\">\n    <script type=\"module\" src=\"{% static 'javascript/map_functionality.js' %}\"></script>\n</head>\n  <body>\n    <h3>My Google Maps Demo</h3>\n    <!--The div element for the map -->\n    <div id=\"map\"></div>\n\n    <p id=\"location\"></p>\n\n    <!-- prettier-ignore -->\n    <script>\n\n        (g=>{let h,a,k,p=\"The Google Maps JavaScript API\",c=\"google\",l=\"importLibrary\",q=\"__ib__\",m=document,b=window;b=b[c]||(b[c]={});let d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement(\"script\"));e.set(\"libraries\",[...r]+\"\");for(k in g)e.set(k.replace(/[A-Z]/g,t=>\"_\"+t[0].toLowerCase()),g[k]);e.set(\"callback\",c+\".maps.\"+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+\" could not load.\"));a.nonce=m.querySelector(\"script[nonce]\")?.nonce||\"\";m.head.append(a)}));d[l]?console.warn(p+\" only loads once. Ignoring:\",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({\n        key: \"AIzaSyDQajrLWbY8hgHFzbOgfuHmlyIe51iWHUc\",\n        v: \"weekly\",\n        // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).\n        // Add other bootstrap parameters as needed, using camel case.\n      });\n\n    </script>\n  </body>\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Restaurant_Search/templates/Restaurant_Search/map.html b/Restaurant_Search/templates/Restaurant_Search/map.html
+--- a/Restaurant_Search/templates/Restaurant_Search/map.html	(revision adb7b475ff7d0bc0a72a84e1756e623cb4416225)
++++ b/Restaurant_Search/templates/Restaurant_Search/map.html	(date 1727277598453)
+@@ -5,6 +5,7 @@
+  SPDX-License-Identifier: Apache-2.0
+ -->
+ <html lang="en">
++
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@@ -16,24 +17,70 @@
+     <!-- Link to CSS file -->
+     <link rel="stylesheet" type="text/css" href="{% static 'css/map_styles.css' %}">
+     <script type="module" src="{% static 'javascript/map_functionality.js' %}"></script>
++
++    <style>
++        /* General styles */
++        body {
++            font-family: Arial, sans-serif;
++            height: 100vh;
++            margin: 0;
++            display: flex;
++            flex-direction: column;
++            justify-content: center;
++            align-items: center;
++            background: linear-gradient(to right, #4f8cff, #9147ff);
++            color: white;
++        }
++
++        /* Centered container */
++        .container {
++            background-color: white;
++            padding: 40px;
++            border-radius: 10px;
++            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
++            width: 900px;
++            text-align: center;
++            color: #333;
++        }
++
++        /* Map div styling */
++        #map {
++            height: 400px;
++            width: 100%;
++            margin-top: 20px;
++            border-radius: 10px;
++            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
++        }
++
++        /* Text styling */
++        h3 {
++            font-size: 2em;
++            margin-bottom: 20px;
++        }
++
++        p {
++            font-size: 1.2em;
++            color: #555;
++        }
++    </style>
+ </head>
+-  <body>
+-    <h3>My Google Maps Demo</h3>
+-    <!--The div element for the map -->
+-    <div id="map"></div>
++
++<body>
++    <div class="container">
++        <h3>My Google Maps Demo</h3>
++        <!-- The div element for the map -->
++        <div id="map"></div>
+ 
+-    <p id="location"></p>
++        <p id="location"></p>
++    </div>
+ 
+     <!-- prettier-ignore -->
+     <script>
+-
+         (g=>{let h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});let d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+         key: "AIzaSyDQajrLWbY8hgHFzbOgfuHmlyIe51iWHUc",
+         v: "weekly",
+-        // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+-        // Add other bootstrap parameters as needed, using camel case.
+       });
+-
+     </script>
+-  </body>
+-</html>
+\ No newline at end of file
++</body>
++
++</html>
+Index: Restaurant_Search/templates/Restaurant_Search/signup.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title> Signup </title>\n</head>\n<body>\n    <h2>Sign up Here</h2>\n    <form method=\"POST\">\n        {% csrf_token %}\n        {{ form.as_p }}\n\n        <button type=\"submit\">Login</button>\n    </form>\n\n    <p>If you have already created an account go to the login page. <a href=\"{% url 'login' %}\">Login Here</a></p>\n</body>\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Restaurant_Search/templates/Restaurant_Search/signup.html b/Restaurant_Search/templates/Restaurant_Search/signup.html
+--- a/Restaurant_Search/templates/Restaurant_Search/signup.html	(revision adb7b475ff7d0bc0a72a84e1756e623cb4416225)
++++ b/Restaurant_Search/templates/Restaurant_Search/signup.html	(date 1727277137408)
+@@ -1,18 +1,89 @@
+ <!DOCTYPE html>
+ <html lang="en">
++
+ <head>
+     <meta charset="UTF-8">
+-    <title> Signup </title>
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <title>Signup</title>
++    <style>
++        /* Background gradient */
++        body {
++            font-family: Arial, sans-serif;
++            height: 100vh;
++            margin: 0;
++            display: flex;
++            justify-content: center;
++            align-items: center;
++            background: linear-gradient(to right, #4f8cff, #9147ff);
++        }
++
++        /* Centering the form */
++        .signup-container {
++            background-color: white;
++            padding: 40px;
++            border-radius: 10px;
++            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
++            width: 900px;
++        }
++
++        /* Form styling */
++        h2 {
++            text-align: center;
++            font-size: 2em;
++            margin-bottom: 20px;
++        }
++
++        form {
++            margin-bottom: 20px;
++        }
++
++        button {
++            width: 100%;
++            padding: 14px;
++            border: none;
++            background: linear-gradient(to right, #4f8cff, #9147ff);
++            color: white;
++            font-size: 16px;
++            border-radius: 5px;
++            cursor: pointer;
++        }
++
++        button:hover {
++            background: linear-gradient(to right, #4f8cff, #6a36cc);
++        }
++
++        /* Links */
++        .form-footer {
++            text-align: center;
++            margin-top: 20px;
++        }
++
++        .form-footer a {
++            color: #9147ff;
++            text-decoration: none;
++        }
++
++        .form-footer a:hover {
++            text-decoration: underline;
++        }
++
++    </style>
+ </head>
++
+ <body>
+-    <h2>Sign up Here</h2>
+-    <form method="POST">
+-        {% csrf_token %}
+-        {{ form.as_p }}
++    <div class="signup-container">
++        <h2>Sign up Here</h2>
++        <form method="POST">
++            {% csrf_token %}
++            {{ form.as_p }}
+ 
+-        <button type="submit">Login</button>
+-    </form>
++            <button type="submit">Sign Up</button>
++        </form>
+ 
+-    <p>If you have already created an account go to the login page. <a href="{% url 'login' %}">Login Here</a></p>
++        <div class="form-footer">
++            <p>If you have already created an account go to the login page. <a href="{% url 'login' %}">Login Here</a></p>
++        </div>
++    </div>
+ </body>
+-</html>
+\ No newline at end of file
++
++</html>
+Index: Restaurant_Search/templates/Restaurant_Search/login.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title> User Login </title>\n</head>\n<body>\n    <h2>Login</h2>\n    {% if error %}\n        <p style=\"color: red\">{{ error }}</p>\n    {% endif %}\n    <form method=\"POST\">\n        {% csrf_token %}\n        <label for=\"username\">Username:</label>\n        <input type=\"text\" name=\"username\" id=\"username\" required><br>\n\n        <label for=\"password\">Password:</label>\n        <input type=\"password\" name=\"password\" id=\"password\" required><br>\n\n        <button type=\"submit\">Login</button>\n\n        <br>\n\n        <p>If you do not have an account registered with this site, register at this link. <a href=\"{% url 'signup' %}\">Signup Here</a></p>\n    </form>\n</body>\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Restaurant_Search/templates/Restaurant_Search/login.html b/Restaurant_Search/templates/Restaurant_Search/login.html
+--- a/Restaurant_Search/templates/Restaurant_Search/login.html	(revision adb7b475ff7d0bc0a72a84e1756e623cb4416225)
++++ b/Restaurant_Search/templates/Restaurant_Search/login.html	(date 1727276735387)
+@@ -1,27 +1,111 @@
+ <!DOCTYPE html>
+ <html lang="en">
++
+ <head>
+     <meta charset="UTF-8">
+-    <title> User Login </title>
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <title>User Login</title>
++    <style>
++        /* Background gradient */
++        body {
++            font-family: Arial, sans-serif;
++            height: 100vh;
++            margin: 0;
++            display: flex;
++            justify-content: center;
++            align-items: center;
++            background: linear-gradient(to right, #4f8cff, #9147ff);
++        }
++
++        /* Centering the form */
++        .login-container {
++            background-color: white;
++            padding: 40px;
++            border-radius: 10px;
++            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
++            width: 400px;
++        }
++
++        /* Form styling */
++        h2 {
++            text-align: center;
++            font-size: 2em;
++            margin-bottom: 20px;
++        }
++
++        label {
++            font-size: 14px;
++            color: #888;
++        }
++
++        input[type="text"], input[type="password"] {
++            width: 100%;
++            padding: 12px;
++            margin: 8px 0 20px 0;
++            border: none;
++            border-bottom: 1px solid #ccc;
++            font-size: 16px;
++        }
++
++        input[type="text"]:focus, input[type="password"]:focus {
++            outline: none;
++            border-bottom: 2px solid #9147ff;
++        }
++
++        button {
++            width: 100%;
++            padding: 14px;
++            border: none;
++            background: linear-gradient(to right, #4f8cff, #9147ff);
++            color: white;
++            font-size: 16px;
++            border-radius: 5px;
++            cursor: pointer;
++        }
++
++        button:hover {
++            background: linear-gradient(to right, #4f8cff, #6a36cc);
++        }
++
++        /* Links */
++        .form-footer {
++            text-align: center;
++            margin-top: 20px;
++        }
++
++        .form-footer a {
++            color: #9147ff;
++            text-decoration: none;
++        }
++
++        .form-footer a:hover {
++            text-decoration: underline;
++        }
++
++    </style>
+ </head>
++
+ <body>
+-    <h2>Login</h2>
+-    {% if error %}
++    <div class="login-container">
++        <h2>Login</h2>
++        {% if error %}
+         <p style="color: red">{{ error }}</p>
+-    {% endif %}
+-    <form method="POST">
+-        {% csrf_token %}
+-        <label for="username">Username:</label>
+-        <input type="text" name="username" id="username" required><br>
++        {% endif %}
++        <form method="POST">
++            {% csrf_token %}
++            <label for="username">Username:</label>
++            <input type="text" name="username" id="username" required><br>
+ 
+-        <label for="password">Password:</label>
+-        <input type="password" name="password" id="password" required><br>
++            <label for="password">Password:</label>
++            <input type="password" name="password" id="password" required><br>
+ 
+-        <button type="submit">Login</button>
++            <button type="submit">Login</button>
+ 
+-        <br>
++            <br>
+ 
+-        <p>If you do not have an account registered with this site, register at this link. <a href="{% url 'signup' %}">Signup Here</a></p>
+-    </form>
++            <p>If you do not have an account registered with this site, register at this link. <a href="{% url 'signup' %}">Signup Here</a></p>
++        </form>
++    </div>
+ </body>
+-</html>
+\ No newline at end of file
++
++</html>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"2ce1d98a-3f6b-4750-8de3-007c2b107a6b\" name=\"Changes\" comment=\"sample commit\">\n      <change afterPath=\"$PROJECT_DIR$/Restaurant_Search/templates/Restaurant_Search/login.html\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/Restaurant_Search/urls.py\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Project_1_2340/urls.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Project_1_2340/urls.py\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/Restaurant_Search/views.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Restaurant_Search/views.py\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"DjangoConsoleOptions\" custom-start-script=\"import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)\">\n    <option name=\"myCustomStartScript\" value=\"import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Python Script\" />\n        <option value=\"HTML File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;calebkeener13&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/Connor5190/CS2340-Project-1.git&quot;,\n    &quot;accountId&quot;: &quot;c68155db-be8c-4946-802d-72adaf2e8e54&quot;\n  }\n}</component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 4\n}</component>\n  <component name=\"ProjectId\" id=\"2lwGUqlrWzc3A39heosJJbuE9TE\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"DefaultHtmlFileTemplate\": \"HTML File\",\n    \"Django Server.Project_1_2340.executor\": \"Run\",\n    \"RunOnceActivity.OpenDjangoStructureViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"git-widget-placeholder\": \"calebK\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"RunManager\">\n    <configuration name=\"Project_1_2340\" type=\"Python.DjangoServer\" factoryName=\"Django server\">\n      <module name=\"Project_1_2340\" />\n      <option name=\"ENV_FILES\" value=\"\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n        <env name=\"DJANGO_SETTINGS_MODULE\" value=\"Project_1_2340.settings\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"launchJavascriptDebuger\" value=\"false\" />\n      <option name=\"port\" value=\"8000\" />\n      <option name=\"host\" value=\"localhost\" />\n      <option name=\"additionalOptions\" value=\"\" />\n      <option name=\"browserUrl\" value=\"\" />\n      <option name=\"runTestServer\" value=\"false\" />\n      <option name=\"runNoReload\" value=\"false\" />\n      <option name=\"useCustomRunCommand\" value=\"false\" />\n      <option name=\"customRunCommand\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-PY-242.20224.428\" />\n        <option value=\"bundled-python-sdk-80e8e15d2b92-39cff9de6eef-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.20224.428\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"2ce1d98a-3f6b-4750-8de3-007c2b107a6b\" name=\"Changes\" comment=\"\" />\n      <created>1726083743997</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1726083743997</updated>\n      <workItem from=\"1726083754482\" duration=\"1975000\" />\n      <workItem from=\"1726414425290\" duration=\"4122000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"sample commit\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726083847709</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726083847709</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"sample commit\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726083888837</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726083888837</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"sample commit\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726083951014</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726083951014</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"4\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"sample commit\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"sample commit\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision adb7b475ff7d0bc0a72a84e1756e623cb4416225)
++++ b/.idea/workspace.xml	(date 1727710256936)
+@@ -5,12 +5,10 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="2ce1d98a-3f6b-4750-8de3-007c2b107a6b" name="Changes" comment="sample commit">
+-      <change afterPath="$PROJECT_DIR$/Restaurant_Search/templates/Restaurant_Search/login.html" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/Restaurant_Search/urls.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Project_1_2340/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project_1_2340/urls.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Restaurant_Search/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/views.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Restaurant_Search/templates/Restaurant_Search/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/templates/Restaurant_Search/login.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Restaurant_Search/templates/Restaurant_Search/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/templates/Restaurant_Search/map.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Restaurant_Search/templates/Restaurant_Search/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant_Search/templates/Restaurant_Search/signup.html" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -45,7 +43,7 @@
+   <component name="GithubPullRequestsUISettings">{
+   &quot;selectedUrlAndAccountId&quot;: {
+     &quot;url&quot;: &quot;https://github.com/Connor5190/CS2340-Project-1.git&quot;,
+-    &quot;accountId&quot;: &quot;c68155db-be8c-4946-802d-72adaf2e8e54&quot;
++    &quot;accountId&quot;: &quot;22032ca9-02f1-4b79-9504-f3cf452e13d2&quot;
+   }
+ }</component>
+   <component name="ProjectColorInfo">{
+@@ -57,21 +55,26 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "DefaultHtmlFileTemplate": "HTML File",
+-    "Django Server.Project_1_2340.executor": "Run",
+-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "calebK",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "vue.rearranger.settings.migration": "true"
+-  }
+-}]]></component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
++    &quot;Django Server.Project_1_2340.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;workingVersion&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  }
++}</component>
++  <component name="RecentsManager">
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="$PROJECT_DIR$/Restaurant_Search/templates/Restaurant_Search" />
++    </key>
++  </component>
+   <component name="RunManager">
+     <configuration name="Project_1_2340" type="Python.DjangoServer" factoryName="Django server">
+       <module name="Project_1_2340" />
+@@ -83,6 +86,7 @@
+         <env name="DJANGO_SETTINGS_MODULE" value="Project_1_2340.settings" />
+       </envs>
+       <option name="SDK_HOME" value="" />
++      <option name="SDK_NAME" value="Python 3.12 (mysite)" />
+       <option name="WORKING_DIRECTORY" value="" />
+       <option name="IS_MODULE_SDK" value="false" />
+       <option name="ADD_CONTENT_ROOTS" value="true" />
+@@ -91,7 +95,7 @@
+       <option name="port" value="8000" />
+       <option name="host" value="localhost" />
+       <option name="additionalOptions" value="" />
+-      <option name="browserUrl" value="" />
++      <option name="browserUrl" value="http://localhost:8000/map/search" />
+       <option name="runTestServer" value="false" />
+       <option name="runNoReload" value="false" />
+       <option name="useCustomRunCommand" value="false" />
+@@ -102,8 +106,8 @@
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-PY-242.20224.428" />
+-        <option value="bundled-python-sdk-80e8e15d2b92-39cff9de6eef-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.20224.428" />
++        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-PY-242.21829.153" />
++        <option value="bundled-python-sdk-464836ebc622-b74155a9e76b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.21829.153" />
+       </set>
+     </attachedChunks>
+   </component>
+@@ -117,6 +121,10 @@
+       <updated>1726083743997</updated>
+       <workItem from="1726083754482" duration="1975000" />
+       <workItem from="1726414425290" duration="4122000" />
++      <workItem from="1727276357053" duration="3560000" />
++      <workItem from="1727709118416" duration="384000" />
++      <workItem from="1727710214492" duration="3000" />
++      <workItem from="1727710234360" duration="23000" />
+     </task>
+     <task id="LOCAL-00001" summary="sample commit">
+       <option name="closed" value="true" />
