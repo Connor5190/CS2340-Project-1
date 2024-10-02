@@ -224,6 +224,7 @@ mapContainer.addEventListener('click', (event) => {
 function addFavorite(placeId, name, address, rating, openHours, latitude, longitude, website) {
     console.log("Fails past or in addFavorite");
     console.log("Name:", name);
+    console.log('CSRF Token:', csrftoken);
     fetch('/favorite-restaurant/', {
         method: 'POST',
         headers: {
