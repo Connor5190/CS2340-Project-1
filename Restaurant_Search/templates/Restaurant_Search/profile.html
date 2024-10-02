@@ -2,24 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> {{ user.username }}'s Profile </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.username }}'s Profile</title>
 
     <!-- Load static files -->
     {% load static %}
 
-    <!-- Link to CSS file -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/profile_styles.css' %}">
+    <!-- Embedded CSS -->
+    <style>
+        /* General Page Style */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #6A11CB, #2575FC); /* Gradient Background */
+            height: 100%;
+        }
+
+        .container {
+            width: 60%; /* Reduced width */
+            max-width: 1000px; /* Limit maximum width */
+            margin: 50px auto; /* Center the container */
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        }
+
+        /* Header and Navigation */
+        .header h1 {
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: #6A11CB; /* Matching theme color */
+            border-radius: 8px;
+        }
+
+        /* Removed Search and Filter Section */
+    </style>
 </head>
 <body>
-    <div id="title">
-        <h1>Atlanta Food Finder</h1>
-    </div>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>Atlanta Food Finder</h1>
+            <nav class="navbar">
+                <a href="{% url 'profile' %}" class="nav-link">Profile</a>
+                <a href="{% url 'map' %}" class="nav-link">Map</a>
+            </nav>
+        </header>
 
-    <div id="menu">
-        <a href="{% url 'profile' %}" class="flex-item">Profile</a>
-        <a href="{% url 'map' %}" class="flex-item">Map</a>
-    </div>
+        <!-- Removed Search Section -->
 
-    <h1>Welcome, {{ user.username }}!</h1>
+        <!-- Content Section -->
+        <section>
+            <h2>Welcome, {{ user.username }}!</h2>
+            <p>Here is your profile page. Use the navigation above to explore more options.</p>
+        </section>
+    </div>
 </body>
 </html>
