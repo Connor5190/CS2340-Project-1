@@ -32,7 +32,8 @@
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            width: 900px;
+            width: 1300px;
+            height: 800px;
             text-align: center;
             color: #333;
         }
@@ -140,29 +141,35 @@
         </div>
 
         <div class="searchAndMap">
-            <div class="filters">
-                <input type="text" id="searchBar" name="details" placeholder="Search for Restaurants" class="restaurant_search">
-                <select id="ratingFilter" class="ratings">
-                    <option value="" disabled selected>Ratings</option>
-                    <option value="0">0 Stars</option>
-                    <option value="1">1 Star</option>
-                    <option value="2">2 Stars</option>
-                    <option value="3">3 Stars</option>
-                    <option value="4">4 Stars</option>
-                    <option value="4.5">5 Stars</option>
-                </select>
-
-                <select id="distanceFilter" class="distance">
-                    <option value="" disabled selected>Distance(km)</option>
-                    <option value="2000">2 km</option>
-                    <option value="5000">5 km</option>
-                    <option value="10000">10 km</option>
-                    <option value="15000">15 km</option>
-                    <option value="20000">20 km</option>
-                    <option value="30000">30 km</option>
-                </select>
+            <div class="filtersBox">
+                <div class="filters">
+                    <input type="text"  id="searchBar" name="details" placeholder="Search for Restaurants" class="restaurant_search">
+                    <select id="ratingFilter" class="ratings">
+                        <option value="" disabled selected>Ratings</option>
+                        <option value="0">All Stars</option>
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="5">5 Stars</option>
+                    </select>
+                    <select id="distanceFilter" class="distance">
+                        <option value="" disabled selected>Distance(km)</option>
+                        <option value="2000">2 km</option>
+                        <option value="5000">5 km</option>
+                        <option value="10000">10 km</option>
+                        <option value="15000">15 km</option>
+                        <option value="20000">20 km</option>
+                        <option value="30000">30 km</option>
+                    </select>
+                </div>
+                <div class="displayResults">
+                    <div>
+                        <h3>Details</h3>
+                    </div>
+                    <div class="scrollableDiv" id="detailsPage"></div>
+                </div>
             </div>
-
             <!-- The div element for the map (placed below the filters) -->
             <div id="map"></div>
         </div>

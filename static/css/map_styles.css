@@ -1,7 +1,6 @@
 #map {
-    height: 400px; /* The height is 400 pixels */
+    height: 600px;
     width: 50%; /* The width is the width of the web page */
-    margin: 0 auto;
 }
 
 #menu{
@@ -78,6 +77,26 @@
     border: 1px solid #ccc;
 }
 
-.infoHeader {
-    display: flex;
+.allRestaurants {
+    background-color: lightgray;
+}
+
+.scrollableDiv {
+    height: 450px;
+    max-height: 450px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px; /* Optional padding */
+    margin: 20px; /* Optional margin */
+    background-color: #4f8cff;
+    border: none;
+}
+
+.placeDiv {
+    background-color: #4f8cff;
+    color: white;
+}
+
+.placeDiv:hover {
+    background-color: #e1b3ff;
+    cursor: pointer;
 }
