@@ -10,7 +10,9 @@
 
     <!-- Link to CSS file -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/map_styles.css' %}">
-    <script type="module" src="{% static 'javascript/map_functionality.js' %}"></script>
+    <script type="module" src="{% static 'javascript/map_functionality.js' %}">
+    </script>
+    <meta name="csrf-token" content="{{ csrf_token }}">
 </head>
 <body>
     <div class="container">

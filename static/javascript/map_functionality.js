@@ -11,6 +11,7 @@ const distanceFilter = document.getElementById('distanceFilter');
 const searchBar = document.getElementById('searchBar');
 const ratingFilter = document.getElementById('ratingFilter');
 const placesContainer = document.getElementById('detailsPage');
+const csrftoken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
 // Function to update the selectedRating when the dropdown value changes
 ratingFilter.addEventListener('change', function() {
@@ -124,8 +125,10 @@ function getPlaceDetails(placeId, markerView) {
 
     const detailsRequest = {
         placeId: placeId,
-        fields: ["website", "opening_hours", "formatted_phone_number", "formatted_address", "rating", "name", "photos"], // Fields for Place Details
+        fields: ["website", "opening_hours", "formatted_phone_number", "formatted_address", "rating", "name", "photos", "geometry", "type"], // Fields for Place Details
     };
+
+
 
     service.getDetails(detailsRequest, (place, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -137,7 +140,16 @@ function getPlaceDetails(placeId, markerView) {
             <div>
                 <div style="display: flex; justify-content: center; gap: 20px; margin-top: 5px;">
                     <h1 style="margin: 0; text-align: center; flex-grow: 1;">${place.name}</h1>
-                    <button style=" 
+                    <button class="favorite-button" 
+                    data-place-id="${placeId}" 
+                    data-name="${place.name}"
+                    data-address="${place.formatted_address}"
+                    data-rating="${place.rating}"
+                    data-open-hours="${place.opening_hours}"
+                    data-latitude="${place.geometry.location.lat()}"
+                    data-longitude="${place.geometry.location.lng()}"
+
+                    style=" 
                                     background-color: #edd2db; /* Pink background */
                                     color: white; /* Heart color */
                                     border: 2px solid #cca7a7; /* Remove default border */
@@ -183,6 +195,73 @@ function getPlaceDetails(placeId, markerView) {
     });
 }
 
+const mapContainer = document.getElementById('map');
+mapContainer.addEventListener('click', (event) => {
+    if (event.target.matches('.favorite-button')) {
+        console.log("Makes it into here");
+        const placeId = event.target.dataset.placeId; // Correctly extracting placeId
+        const placeName = event.target.dataset.name;   // Correctly extracting name
+        const placeAddress = event.target.dataset.address; // Correctly extracting address
+        const placeRating = String(event.target.dataset.rating); // Correctly extracting placeId
+        const placeOpenHours = event.target.dataset.openHours;   // Correctly extracting name
+        const placeLatitude = parseFloat(event.target.dataset.latitude); // Correctly extracting address
+        const placeLongitude = parseFloat(event.target.dataset.longitude); // Correctly extracting address
+
+
+        console.log("Place ID:", placeId);
+        console.log("Place Name:", placeName);
+        console.log("Place Address:", placeAddress);
+        console.log("Place Rating:", placeRating);
+
+        console.log("Maybe the addFavorite function call.");
+        addFavorite(placeId, placeName, placeAddress, placeRating, placeOpenHours, placeLatitude, placeLongitude);
+    }
+});
+
+function addFavorite(placeId, name, address, rating, openHours, latitude, longitude) {
+    console.log("Fails past or in addFavorite");
+    console.log("Name:", name);
+    fetch('/favorite-restaurant/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken  // Get CSRF token for security
+        },
+        body: JSON.stringify({
+            place_id: placeId,
+            name: name,
+            address: address,
+            rating: rating,
+            openHours: openHours,
+            latitude: latitude,
+            longitude: longitude,
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Restaurant added to favorites!');
+        } else {
+            alert('Failed to add restaurant to favorites.');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+// Helper function to get CSRF token (required for Django POST requests)
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
 function clearMarkers() {
     for (let i = 0; i < markers.length; i++) {
         markers[i].setMap(null); // Remove marker from map
@@ -192,7 +271,4 @@ function clearMarkers() {
 
 
 initMap();
-
-
-let favoriteButton = document.getElementById(`favoriteButton-${place_id}`);
 
