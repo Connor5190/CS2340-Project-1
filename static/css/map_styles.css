@@ -1,4 +1,45 @@
-/* Map div styling */
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #4f8cff, #9147ff);
+    color: white;
+}
+
+/* Centered container */
+.container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 1300px;
+    height: 800px;
+    text-align: center;
+    color: #333;
+}
+
+/* Text styling */
+h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.searchAndMap {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 20px;
+}
+
+
 #map {
     height: 400px;
     width: 100%;
