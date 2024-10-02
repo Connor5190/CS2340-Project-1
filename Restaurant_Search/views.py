@@ -116,11 +116,21 @@ def favorite_restaurant(request):
             place_id = data.get("place_id")
             name = data.get("name")
             address = data.get("address")
+            rating = data.get("rating")
+            openHours = data.get("openHours")
+            latitude = data.get("latitude")
+            longitude = data.get("longitude")
 
             # Get or create the restaurant in the database
             restaurant, created = Restaurant.objects.get_or_create(
                 place_id=place_id,
-                defaults={"name": name, "address": address}
+                defaults={"name": name,
+                          "address": address,
+                          "rating": rating,
+                          "openHours": openHours,
+                          "latitude": latitude,
+                          "longitude": longitude
+                          }
             )
 
             # Add to the user's favorites
