@@ -5,14 +5,16 @@ let longitude;
 let searchValue = '';
 let selectedRating = 3; // Default to 3 stars and up
 let selectedRadius = 15000;
+let markers = [];
 
 const distanceFilter = document.getElementById('distanceFilter');
 const searchBar = document.getElementById('searchBar');
 const ratingFilter = document.getElementById('ratingFilter');
+const placesContainer = document.getElementById('detailsPage');
 
 // Function to update the selectedRating when the dropdown value changes
 ratingFilter.addEventListener('change', function() {
-    selectedRating = parseFloat(this.value); // Convert the value to a number
+    selectedRating = parseFloat(ratingFilter.value); // Convert the value to a number
     console.log("Selected rating:", selectedRating);
 
     // Optionally trigger a new search with the updated rating
@@ -69,6 +71,8 @@ async function findPlaces() {
         return;
     }
 
+  clearMarkers();
+
   const { Place } = await google.maps.importLibrary("places");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
   const request = {
@@ -92,6 +96,8 @@ async function findPlaces() {
     const { LatLngBounds } = await google.maps.importLibrary("core");
     const bounds = new LatLngBounds();
 
+    placesContainer.innerHTML = "";
+
     // Loop through and get all the results.
     places.forEach((place) => {
       const markerView = new AdvancedMarkerElement({
@@ -100,9 +106,9 @@ async function findPlaces() {
         title: place.displayName,
       });
 
-      getPlaceDetails(place.id, markerView);
+      markers.push(markerView);
 
-      let infoWindow = new google.maps.InfoWindow;
+      getPlaceDetails(place.id, markerView);
 
       bounds.extend(place.location);
       console.log(place);
@@ -112,7 +118,6 @@ async function findPlaces() {
     console.log("No results");
   }
 }
-
 
 function getPlaceDetails(placeId, markerView) {
     const service = new google.maps.places.PlacesService(map); // Initialize PlacesService with the map
@@ -167,10 +172,22 @@ function getPlaceDetails(placeId, markerView) {
             </div>`;
 
             markerView.addListener('click', () => {
-                console.log("I made it to here at least.")
                 infoWindow.setContent(contentString);
                 infoWindow.open(map, markerView);
             });
+
+            const placeDiv = document.createElement("div");
+            placeDiv.className = "placeDiv"; // Add a class for styling
+            placeDiv.innerHTML = `
+                <h4>* ${place.name} - ${place.formatted_address}</h4>
+            `;
+
+            placeDiv.onclick = function (){
+                window.location.href = `/details/${placeId}/`;
+            }
+
+            // Append the new place div to the parent container
+            placesContainer.appendChild(placeDiv);
         } else {
             console.log("Failed to get place details. Status:", status);
         }
@@ -244,6 +261,13 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+function clearMarkers() {
+    for (let i = 0; i < markers.length; i++) {
+        markers[i].setMap(null); // Remove marker from map
+    }
+    markers = []; // Clear the array of markers
+}
+
 
 initMap();
 
