@@ -36,5 +36,105 @@ def signup_view(request):
     return render(request, 'Restaurant_Search/signup.html', {'form': form})
 
 def map_view(request):
-
     return render(request, 'Restaurant_Search/map.html')
+
+
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
+from .models import Restaurant, Favorite
+
+# The function will only accept POST requests.
+# @require_POST
+# @login_required  # Ensure that the user is logged in to add to favorites
+# def favorite_restaurant(request):
+#     # Extracting data from the POST request.
+#     place_id = request.POST.get('place_id')
+#     name = request.POST.get('name')
+#     address = request.POST.get('address')
+#     rating = request.POST.get('rating')
+#
+#     # Check if the required field 'place_id' is provided.
+#     if not place_id or not name:
+#         return JsonResponse({'status': 'error', 'message': 'Place ID and name are required'}, status=400)
+#
+#     # Check if the restaurant already exists in the database.
+#     restaurant, created = Restaurant.objects.get_or_create(
+#         place_id=place_id,
+#         defaults={
+#             'place_id': place_id,
+#             'name': name,
+#             'address': address,
+#             'rating': rating,
+#         }
+#     )
+#
+#     # Check if the restaurant was successfully added to the Restaurant model.
+#     if created:
+#         # New restaurant created
+#         restaurant_info = f'New restaurant {name} added to database'
+#     else:
+#         # Restaurant already exists
+#         restaurant_info = f'Restaurant {name} already exists in the database'
+#
+#
+#     # Now check if the restaurant is already in the user's favorites.
+#     favorite_exists = Favorite.objects.filter(user=request.user, restaurant=restaurant).exists()
+#
+#     if favorite_exists:
+#         # If the restaurant is already a favorite, return a message.
+#         return JsonResponse({
+#             'status': 'exists',
+#             'restaurant_info': restaurant_info,
+#             'message': f'Restaurant {name} is already in your favorites.'
+#         })
+#
+#     # Otherwise, create the favorite entry.
+#     Favorite.objects.create(user=request.user, restaurant=restaurant)
+#
+#
+#     # Return a JSON response with status and information about the operation.
+#     return JsonResponse({
+#         'status': 'success',
+#         'restaurant_info': restaurant_info,
+#         'message': f'Restaurant {name} added to favorites.'
+#     })
+
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+from .models import Restaurant, Favorite
+
+
+@csrf_exempt
+def favorite_restaurant(request):
+    print("made it!")
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            place_id = data.get("place_id")
+            name = data.get("name")
+            address = data.get("address")
+
+            # Get or create the restaurant in the database
+            restaurant, created = Restaurant.objects.get_or_create(
+                place_id=place_id,
+                defaults={"name": name, "address": address}
+            )
+
+            # Add to the user's favorites
+            favorite, favorite_created = Favorite.objects.get_or_create(
+                user=request.user,
+                restaurant=restaurant
+            )
+
+            if favorite_created:
+                return JsonResponse({"status": "success", "message": "Restaurant added to favorites."})
+            else:
+                return JsonResponse({"status": "info", "message": "Restaurant is already in your favorites."})
+
+        except json.JSONDecodeError:
+            return JsonResponse({"status": "error", "message": "Invalid data"}, status=400)
+
+    return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
