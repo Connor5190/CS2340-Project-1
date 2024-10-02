@@ -1,6 +1,6 @@
 import json
 from django.http import JsonResponse, HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -38,3 +38,11 @@ def signup_view(request):
 def map_view(request):
 
     return render(request, 'Restaurant_Search/map.html')
+
+def details_view(request, place_id):
+    place = place_id  # Assuming you are using slugs
+
+    context = {
+        'place_id': place_id,
+    }
+    return render(request, 'Restaurant_Search/details.html', context)

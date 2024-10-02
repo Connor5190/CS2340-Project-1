@@ -1,0 +1,31 @@
+#map {
+    height: 300px; /* The height is 400 pixels */
+    width: 40%; /* The width is the width of the web page */
+    margin: 80px auto;
+}
+
+.restaurantName {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #4f8cff, #9147ff);
+    color: white;
+    margin-bottom: 10px;
+    height: 150px;
+}
+
+.information {
+    text-align: center;
+}
+
+.reviewDiv {
+    align-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+#reviews {
+    display: flex;
+    flex-direction: column;
+    border: 1px #ccc solid;
+}
