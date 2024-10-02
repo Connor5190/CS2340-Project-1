@@ -193,6 +193,3 @@ function clearMarkers() {
 
 initMap();
 
-
-let favoriteButton = document.getElementById(`favoriteButton-${place_id}`);
-

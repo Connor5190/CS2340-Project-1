@@ -6,12 +6,12 @@
 
 .restaurantName {
     display: flex;
+    background: #333;
     justify-content: center;
-    align-items: center;
-    background: linear-gradient(to right, #4f8cff, #9147ff);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgb(0,0,0,0.1);
     color: white;
-    margin-bottom: 10px;
-    height: 150px;
 }
 
 .information {
@@ -28,4 +28,33 @@
     display: flex;
     flex-direction: column;
     border: 1px #ccc solid;
+}
+
+
+
+.flex-item{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.flex-item:hover {
+    background: #6A11CB;
+    border-radius: 8px;
+}
+
+.returnButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #333;
+    border: none;
+    color: white;
+}
+
+.returnButton:hover {
+    background: #6A11CB;
 }

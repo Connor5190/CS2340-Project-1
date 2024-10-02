@@ -37,11 +37,13 @@ p {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two equal columns */
     gap: 20px;
+    justify-content: center;
+    align-items: center;
 }
 
 
 #map {
-    height: 400px;
+    height: 630px;
     width: 100%;
     margin-top: 20px;
     border-radius: 10px;
@@ -138,17 +140,21 @@ p {
     overflow-y: auto; /* Enable vertical scrolling */
     padding: 10px; /* Optional padding */
     margin: 20px; /* Optional margin */
-    background-color: #4f8cff;
+    background-color: #333;
     border: none;
 }
 
 .placeDiv {
-    background-color: #4f8cff;
+    background-color: #333;
+    margin: 10px;
     color: white;
+    border: 1px #ccc solid;
+    border-radius: 10px;
 }
 
 .placeDiv:hover {
-    background-color: #e1b3ff;
+    background:#6A11CB;
+    border-radius: 8px;
     cursor: pointer;
 }
 
