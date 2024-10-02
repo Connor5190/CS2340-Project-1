@@ -113,6 +113,7 @@ async function findPlaces() {
   }
 }
 
+
 function getPlaceDetails(placeId, markerView) {
     const service = new google.maps.places.PlacesService(map); // Initialize PlacesService with the map
 
@@ -120,6 +121,8 @@ function getPlaceDetails(placeId, markerView) {
         placeId: placeId,
         fields: ["website", "opening_hours", "formatted_phone_number", "formatted_address", "rating", "name", "photos"], // Fields for Place Details
     };
+
+
 
     service.getDetails(detailsRequest, (place, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -131,7 +134,13 @@ function getPlaceDetails(placeId, markerView) {
             <div>
                 <div style="display: flex; justify-content: center; gap: 20px; margin-top: 5px;">
                     <h1 style="margin: 0; text-align: center; flex-grow: 1;">${place.name}</h1>
-                    <button id="favoriteButton-${placeId}" style=" 
+                    <button class="favorite-button" 
+                    data-place-id="${placeId}" 
+                    data-name="${place.name}"
+                    data-address="${place.formatted_address}"
+                    // data-place-id="${placeId}"
+                    // data-place-id="${placeId}"
+                    style=" 
                                     background-color: #edd2db; /* Pink background */
                                     color: white; /* Heart color */
                                     border: 2px solid #cca7a7; /* Remove default border */
@@ -158,18 +167,6 @@ function getPlaceDetails(placeId, markerView) {
                 console.log("I made it to here at least.")
                 infoWindow.setContent(contentString);
                 infoWindow.open(map, markerView);
-
-                //from ChatGPT
-                // Add event listener for the favorite button
-                document.addEventListener('DOMContentLoaded', () => {
-                    console.log("Hi")
-    // Your code to add event listeners
-                    document.getElementById(`favoriteButton-${placeId}`).addEventListener('click', () => {
-                        console.log("Made it to addFavorite.")
-                        addFavorite(placeId, place.name, place.formatted_address);
-                    });
-                });
-
             });
         } else {
             console.log("Failed to get place details. Status:", status);
@@ -177,7 +174,25 @@ function getPlaceDetails(placeId, markerView) {
     });
 }
 
+const mapContainer = document.getElementById('map');
+mapContainer.addEventListener('click', (event) => {
+    if (event.target.matches('.favorite-button')) {
+        console.log("Makes it into here");
+        const placeId = event.target.dataset.placeId; // Correctly extracting placeId
+        const placeName = event.target.dataset.name;   // Correctly extracting name
+        const placeAddress = event.target.dataset.address; // Correctly extracting address
+
+        console.log("Place ID:", placeId);
+        console.log("Place Name:", placeName);
+        console.log("Place Address:", placeAddress);
+        console.log("Maybe the addFavorite function call.");
+        addFavorite(placeId, placeName, placeAddress);
+    }
+});
+
 function addFavorite(placeId, name, address) {
+    console.log("Fails past or in addFavorite");
+    console.log("Name:", name);
     fetch('/favorite-restaurant/', {
         method: 'POST',
         headers: {
