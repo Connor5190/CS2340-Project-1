@@ -119,7 +119,7 @@ function getPlaceDetails(placeId, markerView) {
 
     const detailsRequest = {
         placeId: placeId,
-        fields: ["website", "opening_hours", "formatted_phone_number", "formatted_address", "rating", "name", "photos"], // Fields for Place Details
+        fields: ["website", "opening_hours", "formatted_phone_number", "formatted_address", "rating", "name", "photos", "geometry", "type"], // Fields for Place Details
     };
 
 
@@ -138,8 +138,11 @@ function getPlaceDetails(placeId, markerView) {
                     data-place-id="${placeId}" 
                     data-name="${place.name}"
                     data-address="${place.formatted_address}"
-                    // data-place-id="${placeId}"
-                    // data-place-id="${placeId}"
+                    data-rating="${place.rating}"
+                    data-open-hours="${place.opening_hours}"
+                    data-latitude="${place.geometry.location.lat()}"
+                    data-longitude="${place.geometry.location.lng()}"
+
                     style=" 
                                     background-color: #edd2db; /* Pink background */
                                     color: white; /* Heart color */
@@ -181,16 +184,23 @@ mapContainer.addEventListener('click', (event) => {
         const placeId = event.target.dataset.placeId; // Correctly extracting placeId
         const placeName = event.target.dataset.name;   // Correctly extracting name
         const placeAddress = event.target.dataset.address; // Correctly extracting address
+        const placeRating = parseFloat(event.target.dataset.rating); // Correctly extracting placeId
+        const placeOpenHours = event.target.dataset.openHours;   // Correctly extracting name
+        const placeLatitude = parseFloat(event.target.dataset.latitude); // Correctly extracting address
+        const placeLongitude = parseFloat(event.target.dataset.longitude); // Correctly extracting address
+
 
         console.log("Place ID:", placeId);
         console.log("Place Name:", placeName);
         console.log("Place Address:", placeAddress);
+        console.log("Place Rating:", placeRating);
+
         console.log("Maybe the addFavorite function call.");
-        addFavorite(placeId, placeName, placeAddress);
+        addFavorite(placeId, placeName, placeAddress, placeRating, placeOpenHours, placeLatitude, placeLongitude);
     }
 });
 
-function addFavorite(placeId, name, address) {
+function addFavorite(placeId, name, address, rating, openHours, latitude, longitude) {
     console.log("Fails past or in addFavorite");
     console.log("Name:", name);
     fetch('/favorite-restaurant/', {
@@ -202,7 +212,11 @@ function addFavorite(placeId, name, address) {
         body: JSON.stringify({
             place_id: placeId,
             name: name,
-            address: address
+            address: address,
+            rating: rating,
+            openHours: openHours,
+            latitude: latitude,
+            longitude: longitude,
         })
     })
     .then(response => {
