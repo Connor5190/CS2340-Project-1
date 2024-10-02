@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right, #4f8cff, #9147ff);
+    background: #333;
     color: white;
     margin-bottom: 10px;
     height: 150px;
@@ -28,4 +28,18 @@
     display: flex;
     flex-direction: column;
     border: 1px #ccc solid;
+}
+
+.backButton {
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.backButton:hover {
+    background:#6A11CB;
+    border-radius: 8px;
 }
