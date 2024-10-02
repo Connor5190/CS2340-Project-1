@@ -11,6 +11,7 @@ class Restaurant(models.Model):
     openHours = models.CharField(max_length=1000, null=True, blank=True)
     latitude = models.CharField(max_length=5, null=True, blank=True)
     longitude = models.CharField(max_length=5, null=True, blank=True)
+    # website = models.CharField(max_length=700, null=True, blank=True)
 
     def __str__(self):
         return self.name

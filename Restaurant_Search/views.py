@@ -156,3 +156,19 @@ def details_view(request, place_id):
         'place_id': place_id,
     }
     return render(request, 'Restaurant_Search/details.html', context)
+
+# This method returns all of the place_id of favorites for a given user
+@login_required
+def get_user_favorites(request):
+    user = request.user
+    favorites = Favorite.objects.filter(user=user)
+
+    favorite_restaurants = []
+    for favorite in favorites:
+        favorite_restaurants.append({
+            'place_id': favorite.restaurant.place_id,
+            'name': favorite.restaurant.name,
+            'address': favorite.restaurant.address
+        })
+
+    return JsonResponse({'place_ids': favorite_restaurants})

@@ -75,6 +75,13 @@
         </div>
 
         <h1>Welcome, {{ user.username }}!</h1>
+        <div id="favorite-restaurants">
+            <h2>Your Favorite Restaurants:</h2>
+            <div id="restaurant-list">
+                <!-- Favorite restaurants will be injected here -->
+            </div>
+        </div>
     </div>
+    <script src="{% static 'javascript/profile.js' %}"></script>
 </body>
 </html>
