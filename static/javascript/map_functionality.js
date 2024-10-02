@@ -11,6 +11,7 @@ const distanceFilter = document.getElementById('distanceFilter');
 const searchBar = document.getElementById('searchBar');
 const ratingFilter = document.getElementById('ratingFilter');
 const placesContainer = document.getElementById('detailsPage');
+const csrftoken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
 // Function to update the selectedRating when the dropdown value changes
 ratingFilter.addEventListener('change', function() {
