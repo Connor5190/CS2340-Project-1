@@ -65,22 +65,16 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header Section -->
-        <header class="header">
+        <div id="title">
             <h1>Atlanta Food Finder</h1>
-            <nav class="navbar">
-                <a href="{% url 'profile' %}" class="nav-link">Profile</a>
-                <a href="{% url 'map' %}" class="nav-link">Map</a>
-            </nav>
-        </header>
+        </div>
 
-        <!-- Removed Search Section -->
+        <div id="menu">
+            <a href="{% url 'profile' %}" class="flex-item">Profile</a>
+            <a href="{% url 'map' %}" class="flex-item">Map</a>
+        </div>
 
-        <!-- Content Section -->
-        <section>
-            <h2>Welcome, {{ user.username }}!</h2>
-            <p>Here is your profile page. Use the navigation above to explore more options.</p>
-        </section>
+        <h1>Welcome, {{ user.username }}!</h1>
     </div>
 </body>
 </html>

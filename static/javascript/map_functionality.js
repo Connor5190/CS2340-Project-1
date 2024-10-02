@@ -168,7 +168,7 @@ function getPlaceDetails(placeId, markerView) {
             const placeDiv = document.createElement("div");
             placeDiv.className = "placeDiv"; // Add a class for styling
             placeDiv.innerHTML = `
-                <h4>${place.name} - ${place.formatted_address}</h4>
+                <h4>* ${place.name} - ${place.formatted_address}</h4>
             `;
 
             placeDiv.onclick = function (){
@@ -192,4 +192,7 @@ function clearMarkers() {
 
 
 initMap();
+
+
+let favoriteButton = document.getElementById(`favoriteButton-${place_id}`);
 

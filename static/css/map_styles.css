@@ -1,13 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #4f8cff, #9147ff);
+    color: white;
+}
+
+/* Centered container */
+.container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 1300px;
+    height: 800px;
+    text-align: center;
+    color: #333;
+}
+
+/* Text styling */
+h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.searchAndMap {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 20px;
+}
+
+
 #map {
-    height: 600px;
-    width: 50%; /* The width is the width of the web page */
+    height: 400px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 10px;
 }
 
 #menu{
-    background: rgb(195, 144, 144);
     display: flex;
-    justify-content: space-evenly;
+    background: #333;
+    justify-content: center;
     margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgb(0,0,0,0.1);
 
 }
 
@@ -22,13 +68,15 @@
     text-decoration: none;
     color: white;
     text-align: center;
-    padding: 10px;
-    flex: 1 1 0;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .flex-item:hover{
-    background: rgb(228, 168, 168);
-    text-decoration: underline;
+    background:#6A11CB;
+    border-radius: 8px;
 }
 
 .restaurant_search {
@@ -40,6 +88,7 @@
     border: 1px solid #ccc;
     background-color: #f9f9f9;
     text-align: center;
+    margin: 0 10px;
 }
 
 .filters {
@@ -61,6 +110,7 @@
     outline: none; /* Removes outline on focus */
     text-align: center; /* Centers the text */
     border: 1px solid #ccc;
+    margin: 0 10px;
 }
 
 .distance {
@@ -75,6 +125,7 @@
     outline: none; /* Removes outline on focus */
     text-align: center; /* Centers the text */
     border: 1px solid #ccc;
+    margin: 0 10px;
 }
 
 .allRestaurants {
@@ -100,3 +151,8 @@
     background-color: #e1b3ff;
     cursor: pointer;
 }
+
+input[type="text"]::placeholder {
+            color: black; /* Light gray color */
+            opacity: 1; /* Ensures the color is fully opaque */
+        }

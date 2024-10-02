@@ -1,8 +1,18 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #6A11CB, #2575FC);
+    height: 100%;
+}
+
 #menu{
-    background: rgb(195, 144, 144);
     display: flex;
-    justify-content: space-evenly;
+    background: #333;
+    justify-content: center;
     margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgb(0,0,0,0.1);
 
 }
 
@@ -17,11 +27,23 @@
     text-decoration: none;
     color: white;
     text-align: center;
-    padding: 10px;
-    flex: 1 1 0;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .flex-item:hover{
-    background: rgb(228, 168, 168);
-    text-decoration: underline;
+    background:#6A11CB;
+    border-radius: 8px;
+}
+
+.container {
+    width: 60%;
+    max-width: 1000px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgb(0,0,0,0.2);
 }
