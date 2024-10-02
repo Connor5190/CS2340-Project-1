@@ -120,6 +120,7 @@ def favorite_restaurant(request):
             openHours = data.get("openHours")
             latitude = data.get("latitude")
             longitude = data.get("longitude")
+            website = data.get("website")
 
             # Get or create the restaurant in the database
             restaurant, created = Restaurant.objects.get_or_create(
@@ -129,7 +130,8 @@ def favorite_restaurant(request):
                           "rating": rating,
                           "openHours": openHours,
                           "latitude": latitude,
-                          "longitude": longitude
+                          "longitude": longitude,
+                          "website": website
                           }
             )
 
@@ -168,7 +170,9 @@ def get_user_favorites(request):
         favorite_restaurants.append({
             'place_id': favorite.restaurant.place_id,
             'name': favorite.restaurant.name,
-            'address': favorite.restaurant.address
+            'address': favorite.restaurant.address,
+            'rating': favorite.restaurant.rating,
+            'website': favorite.restaurant.website
         })
 
     return JsonResponse({'place_ids': favorite_restaurants})

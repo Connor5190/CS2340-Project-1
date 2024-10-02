@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         restaurantItem.innerHTML = `
                         <h3>${place.name}</h3>
                         <p>Address: ${place.address}</p>
-                        <p>Rating: ${place.address}</p>
+                        <p>Rating: ${place.rating}</p>
+                        <p><a href="${place.website}" target="_blank">website</a></p>
                         
                 `;
 

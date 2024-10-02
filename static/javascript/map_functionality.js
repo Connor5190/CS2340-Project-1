@@ -148,6 +148,7 @@ function getPlaceDetails(placeId, markerView) {
                     data-open-hours="${place.opening_hours}"
                     data-latitude="${place.geometry.location.lat()}"
                     data-longitude="${place.geometry.location.lng()}"
+                    data-website="${place.website}"
 
                     style=" 
                                     background-color: #edd2db; /* Pink background */
@@ -206,6 +207,8 @@ mapContainer.addEventListener('click', (event) => {
         const placeOpenHours = event.target.dataset.openHours;   // Correctly extracting name
         const placeLatitude = parseFloat(event.target.dataset.latitude); // Correctly extracting address
         const placeLongitude = parseFloat(event.target.dataset.longitude); // Correctly extracting address
+        const placeWebsite = event.target.dataset.website; // Correctly extracting address
+
 
 
         console.log("Place ID:", placeId);
@@ -214,11 +217,11 @@ mapContainer.addEventListener('click', (event) => {
         console.log("Place Rating:", placeRating);
 
         console.log("Maybe the addFavorite function call.");
-        addFavorite(placeId, placeName, placeAddress, placeRating, placeOpenHours, placeLatitude, placeLongitude);
+        addFavorite(placeId, placeName, placeAddress, placeRating, placeOpenHours, placeLatitude, placeLongitude, placeWebsite);
     }
 });
 
-function addFavorite(placeId, name, address, rating, openHours, latitude, longitude) {
+function addFavorite(placeId, name, address, rating, openHours, latitude, longitude, website) {
     console.log("Fails past or in addFavorite");
     console.log("Name:", name);
     fetch('/favorite-restaurant/', {
@@ -235,6 +238,7 @@ function addFavorite(placeId, name, address, rating, openHours, latitude, longit
             openHours: openHours,
             latitude: latitude,
             longitude: longitude,
+            website: website
         })
     })
     .then(response => {
