@@ -138,7 +138,6 @@ p {
     height: 450px;
     max-height: 450px;
     overflow-y: auto; /* Enable vertical scrolling */
-    padding: 10px; /* Optional padding */
     margin: 20px; /* Optional margin */
     background-color: #333;
     border: none;
@@ -149,12 +148,10 @@ p {
     background-color: #333;
     color: white;
     border: 1px #ccc solid;
-    border-radius: 10px;
 }
 
 .placeDiv:hover {
     background:#6A11CB;
-    border-radius: 8px;
 }
 
 input[type="text"]::placeholder {

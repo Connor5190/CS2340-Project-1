@@ -7,6 +7,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.views import View
 
+def index(request):
+    return render(request, 'Restaurant_Search/index.html');
 def login_view(request):
     if request.method == "POST":
         username = request.POST['username']

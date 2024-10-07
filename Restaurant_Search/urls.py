@@ -12,4 +12,5 @@ urlpatterns = [
     path('favorite-restaurant/', views.favorite_restaurant, name='favorite_restaurant'),
     path('details/<slug:place_id>/', views.details_view, name='details'),
     path('api/user-favorites/', get_user_favorites, name='user_favorites'),
+    path('', views.index, name='index')
 ]

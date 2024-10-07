@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+
+    {% load static %}
+
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+    <div class="login-container">
+        <h1>Welcome to Atlanta Food Finder</h1>
+
+        <p>If you have already created an account:</p>
+
+        <button onclick="window.location.href='{% url 'login' %}'">Login</button>
+
+        <p>If you have not previously created an account:</p>
+
+        <button onclick="window.location.href='{% url 'signup' %}'">Sign-up</button>
+
+    </div>
+</body>
+
+</html>
