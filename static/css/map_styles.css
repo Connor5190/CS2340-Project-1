@@ -49,21 +49,38 @@ p {
     border-radius: 10px;
 }
 
+#title {
+    display: flex;
+    justify-content: center; /* Centers the title */
+    align-items: center; /* Vertically centers the items */
+    position: relative; /* Vertically centers the items */
+    padding: 10px;
+}
+
+.title {
+  font-size: 34px;
+}
+
+.logout {
+  position: absolute;
+  right: 10px; /* Adjusts how far from the right the logout link should be */
+  font-size: 16px;
+  text-decoration: none;
+  color: #333; /* Pushes logout link to the far right */
+}
+
+.logout:hover {
+  text-decoration: underline;
+}
+
 #menu{
     display: flex;
     background: #333;
-    justify-content: center;
+    justify-content: space-evenly;
     margin-bottom: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgb(0,0,0,0.1);
 
-}
-
-#title {
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .flex-item{
@@ -74,6 +91,8 @@ p {
     font-size: 18px;
     font-weight: 500;
     transition: background-color 0.3s, color 0.3s;
+    flex: 1 1 0;
+
 }
 
 .flex-item:hover{
@@ -82,7 +101,7 @@ p {
 }
 
 .restaurant_search {
-    border-radius: 40px;
+    border-radius: 22px;
     height: 60px;
     width: 200px;
     padding: 0 10px;
@@ -102,9 +121,9 @@ p {
 
 .ratings {
     position: relative; /* Ensure the parent element is positioned */
-    border-radius: 40px;
+    border-radius: 22px;
     height: 60px;
-    width: 92px;
+    width: 100px;
     padding: 0 10px;
     font-size: 15px;
     background-color: #f9f9f9; /* Matches typical input background */
@@ -117,9 +136,9 @@ p {
 
 .distance {
     position: relative; /* Ensure the parent element is positioned */
-    border-radius: 40px;
+    border-radius: 22px;
     height: 60px;
-    width: 100px;
+    width: 130px;
     padding: 0 10px;
     font-size: 15px;
     background-color: #f9f9f9; /* Matches typical input background */

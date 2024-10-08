@@ -17,10 +17,27 @@ body, html {
 }
 
 #title {
-    height: 100px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Centers the title */
+    align-items: center; /* Vertically centers the items */
+    position: relative; /* Vertically centers the items */
+    padding: 10px;
+}
+
+.title {
+  font-size: 34px;
+}
+
+.logout {
+  position: absolute;
+  right: 10px; /* Adjusts how far from the right the logout link should be */
+  font-size: 16px;
+  text-decoration: none;
+  color: #333; /* Pushes logout link to the far right */
+}
+
+.logout:hover {
+  text-decoration: underline;
 }
 
 .flex-item{
@@ -31,6 +48,7 @@ body, html {
     font-size: 18px;
     font-weight: 500;
     transition: background-color 0.3s, color 0.3s;
+    flex: 1 1 0;
 }
 
 .flex-item:hover{

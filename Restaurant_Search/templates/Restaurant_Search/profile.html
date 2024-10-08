@@ -7,66 +7,13 @@
 
     <!-- Load static files -->
     {% load static %}
-
-    <!-- Embedded CSS -->
-    <style>
-        /* General Page Style */
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #6A11CB, #2575FC); /* Gradient Background */
-            height: 100%;
-        }
-
-        .container {
-            width: 60%; /* Reduced width */
-            max-width: 1000px; /* Limit maximum width */
-            margin: 50px auto; /* Center the container */
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-        }
-
-        /* Header and Navigation */
-        .header h1 {
-            text-align: center;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        #menu {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        .flex-item {
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 500;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .flex-item:hover {
-            background-color: #6A11CB; /* Matching theme color */
-            border-radius: 8px;
-        }
-
-        /* Removed Search and Filter Section */
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile_styles.css' %}">
 </head>
 <body>
     <div class="container">
         <div id="title">
-            <h1>Atlanta Food Finder</h1>
+            <h1 class="title">Atlanta Food Finder</h1>
+            <a href="{% url 'login' %}" class="logout">Logout</a>
         </div>
 
         <div id="menu">
