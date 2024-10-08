@@ -65,3 +65,34 @@ body, html {
     border-radius: 15px;
     box-shadow: 0 8px 16px rgb(0,0,0,0.2);
 }
+
+h1, h2 {
+    text-align: center;
+}
+
+#restaurant-list {
+    height: 450px;
+    max-height: 450px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin: 20px; /* Optional margin */
+    background-color: #333;
+    border: none;
+    border-radius: 8px;
+    color: white;
+}
+
+.favorite-restaurant-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.favorite-restaurant-item {
+    background-color: #333;
+    color: white;
+    border: 1px #ccc solid;
+}
+
+.favorite-restaurant-item:hover {
+    background:#6A11CB;
+}

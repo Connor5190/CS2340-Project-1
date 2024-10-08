@@ -29,13 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         restaurantItem.innerHTML = `
                         <h3>${place.name}</h3>
                         <p>Address: ${place.address}</p>
-                        <p>Rating: ${place.rating}</p>
-                        <p><a href="${place.website}" target="_blank">website</a></p>
-                        
+                        <p>Rating: ${place.rating}</p>                        
                 `;
 
                         // Append each favorite restaurant to the list
                         restaurantList.appendChild(restaurantItem);
+
+                        restaurantItem.onclick = function (){
+                            window.location.href = `/details/${place.place_id}/`;
+                        }
                     });
                 } else {
                     restaurantList.innerHTML = '<p>You have no favorite restaurants yet.</p>';
