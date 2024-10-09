@@ -8,6 +8,7 @@ const addressContainer = document.getElementById('address');
 const contactContainer = document.getElementById('contact');
 const cuisineContainer = document.getElementById('cuisine');
 const reviewContainer = document.getElementById('reviews');
+const csrftoken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
 // Initialize the map and then get place details
 async function initMap() {
@@ -66,7 +67,16 @@ async function updateMap(lat, long, place) {
     <div>
         <div style="display: flex; justify-content: center; gap: 20px; margin-top: 5px;">
             <h1 style="margin: 0; text-align: center; flex-grow: 1;">${place.name}</h1>
-            <button style=" 
+            <button class="favorite-button" 
+                    data-place-id="${placeId}" 
+                    data-name="${place.name}"
+                    data-address="${place.formatted_address}"
+                    data-rating="${place.rating}"
+                    data-open-hours="${place.opening_hours}"
+                    data-latitude="${place.geometry.location.lat()}"
+                    data-longitude="${place.geometry.location.lng()}"
+                    data-website="${place.website}"
+                style=" 
                             background-color: #edd2db; /* Pink background */
                             color: white; /* Heart color */
                             border: 2px solid #cca7a7; /* Remove default border */
@@ -113,6 +123,78 @@ async function updateMap(lat, long, place) {
             reviewContainer.appendChild(reviewDiv);
 
 });
+}
+
+const mapContainer2 = document.getElementById(map);
+mapContainer2.addEventListener('click', (event) => {
+    if (event.target.matches('.favorite-button')) {
+        console.log("Makes it into here");
+        const placeId = event.target.dataset.placeId; // Correctly extracting placeId
+        const placeName = event.target.dataset.name;   // Correctly extracting name
+        const placeAddress = event.target.dataset.address; // Correctly extracting address
+        const placeRating = String(event.target.dataset.rating); // Correctly extracting placeId
+        const placeOpenHours = event.target.dataset.openHours;   // Correctly extracting name
+        const placeLatitude = parseFloat(event.target.dataset.latitude); // Correctly extracting address
+        const placeLongitude = parseFloat(event.target.dataset.longitude); // Correctly extracting address
+        const placeWebsite = event.target.dataset.website; // Correctly extracting address
+
+
+
+        console.log("Place ID:", placeId);
+        console.log("Place Name:", placeName);
+        console.log("Place Address:", placeAddress);
+        console.log("Place Rating:", placeRating);
+
+        console.log("Maybe the addFavorite function call.");
+        addFavorite(placeId, placeName, placeAddress, placeRating, placeOpenHours, placeLatitude, placeLongitude, placeWebsite);
+    }
+});
+
+function addFavorite(placeId, name, address, rating, openHours, latitude, longitude, website) {
+    console.log("Fails past or in addFavorite");
+    console.log("Name:", name);
+    console.log('CSRF Token:', csrftoken);
+    fetch('/favorite-restaurant/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken  // Get CSRF token for security
+        },
+        body: JSON.stringify({
+            place_id: placeId,
+            name: name,
+            address: address,
+            rating: rating,
+            openHours: openHours,
+            latitude: latitude,
+            longitude: longitude,
+            website: website
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Restaurant added to favorites!');
+        } else {
+            alert('Failed to add restaurant to favorites.');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+//Helper function to get CSRF token (required for Django POST requests)
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }
 
 // Initialize the map on page load
