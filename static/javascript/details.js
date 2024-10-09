@@ -50,8 +50,8 @@ function getPlaceDetails(placeId) {
 
 // Update the map and add a marker with the fetched details
 async function updateMap(lat, long, place) {
-    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-    const restPosition = { lat: lat, lng: long };
+    const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
+    const restPosition = {lat: lat, lng: long};
 
     map.setCenter(restPosition); // Update map center
 
@@ -62,6 +62,16 @@ async function updateMap(lat, long, place) {
     });
 
     let infoWindow = new google.maps.InfoWindow;
+
+    infoWindow.addListener('domready', () => {
+    const favoriteButton = document.querySelector('.favorite-button');
+    if (favoriteButton) {
+        favoriteButton.addEventListener('click', (event) => {
+            console.log("Favorite button clicked");
+            // Rest of your code
+        });
+    }
+});
 
     const contentString = `
     <div>
@@ -76,7 +86,8 @@ async function updateMap(lat, long, place) {
                     data-latitude="${place.geometry.location.lat()}"
                     data-longitude="${place.geometry.location.lng()}"
                     data-website="${place.website}"
-                style=" 
+                    
+                    style=" 
                             background-color: #edd2db; /* Pink background */
                             color: white; /* Heart color */
                             border: 2px solid #cca7a7; /* Remove default border */
@@ -109,23 +120,23 @@ async function updateMap(lat, long, place) {
     contactContainer.innerHTML = place.formatted_phone_number;
     cuisineContainer.innerHTML = place.types[1] || "No cuisine provided";
 
-    place.reviews.forEach(function(review, index) {
-        const reviewDiv  = document.createElement("div");
-            reviewDiv.className = "reviewDiv"; // Add a class for styling
-            reviewDiv.innerHTML = `
+    place.reviews.forEach(function (review, index) {
+        const reviewDiv = document.createElement("div");
+        reviewDiv.className = "reviewDiv"; // Add a class for styling
+        reviewDiv.innerHTML = `
                 <h3>Review ${index + 1}</h3>
                 <p><strong>Author: </strong>${review['author_name']}</p>
                 <p><strong>Review: </strong> ${review['text']}</p>
                 <p><strong>Rating: </strong> ${review['rating']}</p>
             `;
 
-            // Append the new place div to the parent container
-            reviewContainer.appendChild(reviewDiv);
+        // Append the new place div to the parent container
+        reviewContainer.appendChild(reviewDiv);
 
-});
+    });
 }
 
-const mapContainer2 = document.getElementById(map);
+const mapContainer2 = document.getElementById('map');
 mapContainer2.addEventListener('click', (event) => {
     if (event.target.matches('.favorite-button')) {
         console.log("Makes it into here");
@@ -137,8 +148,6 @@ mapContainer2.addEventListener('click', (event) => {
         const placeLatitude = parseFloat(event.target.dataset.latitude); // Correctly extracting address
         const placeLongitude = parseFloat(event.target.dataset.longitude); // Correctly extracting address
         const placeWebsite = event.target.dataset.website; // Correctly extracting address
-
-
 
         console.log("Place ID:", placeId);
         console.log("Place Name:", placeName);
