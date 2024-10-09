@@ -103,7 +103,6 @@ async function updateMap(lat, long, place) {
         const reviewDiv  = document.createElement("div");
             reviewDiv.className = "reviewDiv"; // Add a class for styling
             reviewDiv.innerHTML = `
-                <h3>Review ${index + 1}</h3>
                 <p><strong>Author: </strong>${review['author_name']}</p>
                 <p><strong>Review: </strong> ${review['text']}</p>
                 <p><strong>Rating: </strong> ${review['rating']}</p>

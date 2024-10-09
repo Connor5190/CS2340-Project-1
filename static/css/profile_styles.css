@@ -33,7 +33,7 @@ body, html {
   right: 10px; /* Adjusts how far from the right the logout link should be */
   font-size: 16px;
   text-decoration: none;
-  color: #333; /* Pushes logout link to the far right */
+  color: #333;
 }
 
 .logout:hover {
@@ -85,7 +85,6 @@ h1, h2 {
     display: grid;
     grid-template-columns: 1.5fr 2fr 1fr;
     padding: 10px;
-    margin-right: 5px;
     justify-items: center;
     align-items: center;
 }

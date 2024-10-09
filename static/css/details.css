@@ -1,3 +1,29 @@
+.restaurantName {
+    display: flex;
+    justify-content: center; /* Centers the title */
+    align-items: center; /* Vertically centers the items */
+    position: relative; /* Vertically centers the items */
+    padding: 10px;
+}
+
+.title {
+  font-size: 34px;
+}
+
+.profile {
+    position: absolute;
+    right: 10px; /* Adjusts how far from the right the logout link should be */
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    padding-right: 120px;
+
+}
+
+.profile:hover {
+  text-decoration: underline;
+}
+
 #map {
     height: 300px; /* The height is 400 pixels */
     width: 40%; /* The width is the width of the web page */
@@ -20,14 +46,20 @@
 
 .reviewDiv {
     align-content: center;
+    justify-content: center;
     text-align: center;
-    width: 100%;
+    border: black solid 1px;
+    margin: 10px;
+    width : 75%;
+    padding: 0 10px;
 }
 
 #reviews {
     display: flex;
     flex-direction: column;
-    border: 1px #ccc solid;
+    align-items: center;
+    justify-content: center;
+    border: none;
 }
 
 .backButton {
