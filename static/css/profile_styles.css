@@ -82,9 +82,12 @@ h1, h2 {
 }
 
 .favorite-restaurant-item {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 1fr;
     padding: 10px;
+    margin-right: 5px;
+    justify-items: center;
+    align-items: center;
 }
 
 .favorite-restaurant-item {
