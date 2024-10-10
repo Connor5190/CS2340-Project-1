@@ -67,58 +67,79 @@ async function initMap() {
 }
 
 async function findPlaces() {
-  if (!searchValue) {
-        console.log("No search value provided.");
-        return;
-    }
-
-  clearMarkers();
+  clearMarkers(); // Clear existing markers
 
   const { Place } = await google.maps.importLibrary("places");
   const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-  const request = {
-    textQuery: searchValue,
-    fields: ["displayName", "location", "businessStatus", "formattedAddress", 'priceLevel'],
-    includedType: "restaurant",
-    locationBias: { lat: latitude, lng: longitude },
-    isOpenNow: true,
-    language: "en-US",
-    maxResultCount: 20,
-    minRating: selectedRating,
-    region: "us",
-    useStrictTypeFiltering: false,
-  };
-  //@ts-ignore
-  const { places } = await Place.searchByText(request);
 
-  if (places.length) {
-    console.log(places);
+  console.log(selectedRadius);
 
-    const { LatLngBounds } = await google.maps.importLibrary("core");
-    const bounds = new LatLngBounds();
-
-    placesContainer.innerHTML = "";
-
-    // Loop through and get all the results.
-    places.forEach((place) => {
-      const markerView = new AdvancedMarkerElement({
-        map,
-        position: place.location,
-        title: place.displayName,
-      });
-
-      markers.push(markerView);
-
-      getPlaceDetails(place.id, markerView);
-
-      bounds.extend(place.location);
-      console.log(place);
-    });
-    map.fitBounds(bounds);
-  } else {
-    console.log("No results");
+  // Ensure selectedRating is defined and has a value
+  if (typeof selectedRating !== 'number' || selectedRating < 0 || selectedRating > 5) {
+    console.error("Invalid selectedRating. It should be a number between 0 and 5.");
+    return; // Exit the function if the rating is invalid
   }
+
+  // Define the search request for nearby places
+  const request = {
+    location: { lat: latitude, lng: longitude }, // Use the current user location
+    radius: selectedRadius, // Use the selected radius from the distance filter
+    type: "restaurant", // We're looking for restaurants
+    openNow: true, // Only include places that are currently open
+    minPriceLevel: 0, // Optional: Filter based on price (0 = free, 4 = very expensive)
+    maxPriceLevel: 4,
+  };
+
+  // Use the PlacesService to perform a nearby search
+  const service = new google.maps.places.PlacesService(map);
+  service.nearbySearch(request, (results, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      console.log("Radius used for search:", request.radius); // Check the radius
+      console.log("Number of results before filtering:", results.length);
+      console.log("Results before filtering by rating:", results);
+
+      const { LatLngBounds } = google.maps;
+      const bounds = new LatLngBounds();
+      placesContainer.innerHTML = ""; // Clear previous results
+
+      // Filter results by rating
+      const filteredResults = results.filter(place => place.rating >= selectedRating);
+      console.log("Number of results after filtering by rating:", filteredResults.length);
+
+      // Only proceed if there are results after filtering
+      if (filteredResults.length > 0) {
+        filteredResults.forEach((place) => {
+          console.log("Creating marker for:", place.name); // Log the place name
+
+          const markerView = new AdvancedMarkerElement({
+            map,
+            position: place.geometry.location,
+            title: place.name,
+          });
+
+          markers.push(markerView);
+
+          getPlaceDetails(place.place_id, markerView); // Fetch details for each place
+
+          bounds.extend(place.geometry.location); // Adjust the map bounds
+        });
+
+        map.fitBounds(bounds); // Adjust map view to include all markers
+      } else {
+        console.log("No results found after filtering by rating.");
+        clearMarkers(); // Ensure markers are cleared if no results
+      }
+    } else {
+      // Clear previous results, but don't change the bounds
+      console.log("No results found or search failed.");
+      placesContainer.innerHTML = ""; // Clear previous results
+      clearMarkers(); // Ensure all markers are cleared
+    }
+  });
 }
+
+
+
 
 function getPlaceDetails(placeId, markerView) {
     const service = new google.maps.places.PlacesService(map); // Initialize PlacesService with the map
