@@ -104,8 +104,8 @@ async function updateMap(lat, long, place) {
             reviewDiv.className = "reviewDiv"; // Add a class for styling
             reviewDiv.innerHTML = `
                 <p><strong>Author: </strong>${review['author_name']}</p>
-                <p><strong>Review: </strong> ${review['text']}</p>
                 <p><strong>Rating: </strong> ${review['rating']}</p>
+                <p><strong>Review: </strong> ${review['text']}</p>
             `;
 
             // Append the new place div to the parent container

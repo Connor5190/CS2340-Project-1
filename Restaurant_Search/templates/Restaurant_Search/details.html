@@ -12,6 +12,7 @@
 </head>
 <body>
         <div class="restaurantName">
+            <a href="{% url 'map' %}" class="search">Back to Search</a>
             <h1 id="restaurantName" class="title"></h1>
             <a href="{% url 'profile' %}" class="profile">Profile</a>
         </div>
@@ -30,13 +31,13 @@
             <h2>Rating/Reviews</h2>
             <div id="reviews"></div>
         </div>
-        <div class="restaurantName" id="createReview">
-             <a href="{% url 'map' %}">
-                <button class="backButton">
-                    Return to Search
-                </button>
-            </a>
-        </div>
+{#        <div class="restaurantName" id="createReview">#}
+{#             <a href="{% url 'map' %}">#}
+{#                <button class="backButton">#}
+{#                    Return to Search#}
+{#                </button>#}
+{#            </a>#}
+{#        </div>#}
     <script>
         (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));
         // Add 'places' to the libraries set

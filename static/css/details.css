@@ -47,7 +47,7 @@
 .reviewDiv {
     align-content: center;
     justify-content: center;
-    text-align: center;
+    text-align: left;
     border: black solid 1px;
     margin: 10px;
     width : 75%;
@@ -74,4 +74,17 @@
 .backButton:hover {
     background:#6A11CB;
     border-radius: 8px;
+}
+
+.search {
+    position: absolute;
+    left: 10px; /* Adjusts how far from the right the logout link should be */
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    padding-left: 120px;
+}
+
+.search:hover {
+    text-decoration: underline;
 }
