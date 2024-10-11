@@ -1,5 +1,4 @@
 let map;
-let center;
 let latitude;
 let longitude;
 let searchValue = '';
@@ -43,6 +42,8 @@ searchBar.addEventListener('keydown', getSearchValue);
 
 async function initMap() {
     const { Map } = await google.maps.importLibrary("maps");
+    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
   if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
           (position) => {
@@ -56,8 +57,116 @@ async function initMap() {
                 zoom: 11,
                 mapId: "DEMO_MAP_ID",
               });
-          },
-          (error) => {
+
+                // Create a new instance of the PlacesService using the map instance
+                const service = new google.maps.places.PlacesService(map);
+
+                const request = {
+                  location: userPosition,
+                  type: "restaurant",
+                  rankBy: google.maps.places.RankBy.DISTANCE,
+                };
+
+                service.nearbySearch(request, function (results, status) {
+                  if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    for (let i = 0; i < results.length && i < 20; i++) {
+                      const place = results[i];
+                      const placeId = place.place_id;
+
+                      // Proceed with the marker creation and place details
+                      const placeMarker = new AdvancedMarkerElement({
+                        position: place.geometry.location,
+                        map: map,
+                        title: place.name,
+                      });
+
+                      markers.push(placeMarker);
+
+                          const service = new google.maps.places.PlacesService(map); // Initialize PlacesService with the map
+
+                            const detailsRequest = {
+                                placeId: placeId,
+                                fields: ["website", "opening_hours", "formatted_phone_number", "formatted_address", "rating", "name", "photos", "geometry", "type"], // Fields for Place Details
+                            };
+
+
+
+                            service.getDetails(detailsRequest, (place, status) => {
+                                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                                    console.log("Place details:", place);
+
+                                    let infoWindow = new google.maps.InfoWindow;
+
+                                    const contentString = `
+                                    <div>
+                                        <div style="display: flex; justify-content: center; gap: 20px; margin-top: 5px;">
+                                            <h1 style="margin: 0; text-align: center; flex-grow: 1;">${place.name}</h1>
+                                            <button class="favorite-button" 
+                                            data-place-id="${placeId}" 
+                                            data-name="${place.name}"
+                                            data-address="${place.formatted_address}"
+                                            data-rating="${place.rating}"
+                                            data-open-hours="${place.opening_hours}"
+                                            data-latitude="${place.geometry.location.lat()}"
+                                            data-longitude="${place.geometry.location.lng()}"
+                                            data-website="${place.website}"
+                        
+                                            style=" 
+                                                            background-color: #edd2db; /* Pink background */
+                                                            color: white; /* Heart color */
+                                                            border: 2px solid #cca7a7; /* Remove default border */
+                                                            border-radius: 50%; /* Make it circular */
+                                                            width: 40px; /* Button width */
+                                                            height: 40px; /* Button height */
+                                                            font-size: 16px; /* Heart icon size */
+                                                            cursor: pointer; /* Pointer cursor on hover */
+                                                            display: flex; /* Center the heart */
+                                                            justify-content: center; /* Center horizontally */
+                                                            align-items: center; /* Center vertically */
+                                                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+                                                            transition: transform 0.2s;"
+                                                            >❤️</button>
+                                        </div>
+                                        <p><strong>Address:</strong> ${place.formatted_address || 'No address available'}</p>
+                                        <p><strong>Rating:</strong> ${place.rating || 'No rating available'}</p>
+                                        <p><strong>Phone:</strong> ${place.formatted_phone_number || 'No phone number available'}</p>
+                                        <p><strong>Website:</strong> ${place.website ? `<a href="${place.website}" target="_blank">Visit website</a>` : 'No website available'}</p>
+                                        ${place.photos && place.photos.length > 0 ? `<img src="${place.photos[0].getUrl()}" alt="Image of ${place.name}" style="width:100px;height:auto;"/>` : ''}
+                                    </div>`;
+
+                                    placeMarker.addListener('click', () => {
+                                        infoWindow.setContent(contentString);
+                                        infoWindow.open(map, placeMarker);
+                                    });
+
+                                    const placeDiv = document.createElement("div");
+                                    placeDiv.className = "placeDiv"; // Add a class for styling
+                                    placeDiv.innerHTML = `
+                                        <h4><strong>${place.name}</strong></h4>
+                                        <h5>${place.formatted_address}</h5>
+                                    `;
+
+                                    placeDiv.onclick = function (){
+                                        window.location.href = `/details/${placeId}/`;
+                                    }
+
+                                    // Append the new place div to the parent container
+                                    placesContainer.appendChild(placeDiv);
+                                } else {
+                                    console.log("Failed to get place details. Status:", status);
+                                }
+                            });
+
+                            //end of added function
+                    }
+                  } else {
+                    console.error("Nearby search failed due to:", status);
+                  }
+                });
+
+
+                //end of new code
+          }, (error) => {
               console.error("Error retrieving location", error);
           }
       );
@@ -181,7 +290,8 @@ function getPlaceDetails(placeId, markerView) {
             const placeDiv = document.createElement("div");
             placeDiv.className = "placeDiv"; // Add a class for styling
             placeDiv.innerHTML = `
-                <h4>* ${place.name} - ${place.formatted_address}</h4>
+                <h4><strong>${place.name}</strong></h4>
+                <h5>${place.formatted_address}</h5>
             `;
 
             placeDiv.onclick = function (){
